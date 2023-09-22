@@ -27,6 +27,7 @@ function createSel(cities) {
 createSel(cities);
 
 // weather data ==================================================
+
 async function getWeather() {
   const cityId = document.querySelector('#city').value;
   const paramFetchWeatcher = `weather?id=${cityId}&units=metric&appid=${APIKEY}`;
@@ -42,9 +43,10 @@ async function getWeather() {
   const dataForecast = await resForecast.json();
   console.log(dataWeather);
   console.log(dataForecast);
+
   showWeather(dataWeather);
   showForecast(dataForecast);
-
+  return (cityMap = dataWeather);
   // fetch=================================================
   // fetch(param.URL + paramFetch)
   //   .then((weather) => {
@@ -57,6 +59,7 @@ async function getWeather() {
   //   });
 }
 getWeather();
+
 document.querySelector('#city').onchange = getWeather;
 
 // weather data output===================================================
@@ -85,6 +88,8 @@ function showWeather(data) {
   console.log(data.dt);
 
   console.log(dateUnixToDate);
+
+  console.log(dataWeather.name);
 
   divImg.innerHTML = `<img class='out-icon' src='https://openweathermap.org/img/wn/${dataWeather.icon}@2x.png' alt='Image Watcher'>`;
   temp.innerHTML = Math.round(dataWeather.temp) + '&deg;';
