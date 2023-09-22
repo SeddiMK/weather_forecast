@@ -26,7 +26,7 @@ function showPosition(position) {
 
   //   let city = document.querySelector('#city').options;
   console.log(position);
-  //   console.log(city);
+  console.log(lat, lon);
 
   let img_url = `${URLMap}map?key=${APIKEYMap}&center=${lat},${lon}&locations=${lat},${lon}&zoom=14&size=400,300&defaultMarker=marker-md-8950e8-f3b817-Y&banner=&size=@2x`;
 

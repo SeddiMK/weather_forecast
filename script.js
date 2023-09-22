@@ -5,8 +5,59 @@ const cities = {
   5435464: 'Pueblo',
   5188029: 'East Pittsburgh',
 };
+let cityName;
+let lat;
+let lon;
 const selectWrapper = document.querySelector('.out__select-wrapper');
 const out = document.querySelector('.out');
+
+// Using the Geolocation API ===============================================
+const geolocOut = document.getElementById('demo');
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else {
+    geolocOut.innerHTML = 'Geolocation is not supported by this browser.';
+  }
+}
+
+getLocation();
+
+//Displaying the Result in a Map ============================================
+async function showPosition(position) {
+  lat = position.coords.latitude;
+  lon = position.coords.longitude;
+  const paramGeoCodingPosition = `reverse-geocode?latitude=${lat}&longitude=${lon}&localityLanguage=en&key=${APIKEYGeoCod}`;
+  // const cityId = document.querySelector('#city').value;
+
+  const paramFetchWeatcher = `weather?lat=${lat}&lon=${lon}&units=metric&appid=${APIKEY}`;
+  // const paramFetchWeatcher = `weather?id=${cityId}&units=metric&appid=${APIKEY}`;
+  const paramFetchForecast = `forecast?lat=${lat}&lon=${lon}&units=metric&appid=${APIKEY}`;
+  // const paramFetchForecast = `forecast?id=${cityId}&units=metric&appid=${APIKEY}`;
+
+  const resWeatcher = await fetch(URL + paramFetchWeatcher);
+  const resForecast = await fetch(URL + paramFetchForecast);
+
+  const dataWeather = await resWeatcher.json();
+  const dataForecast = await resForecast.json();
+  console.log(dataWeather);
+  console.log(dataForecast);
+
+  showWeather(dataWeather);
+  showForecast(dataForecast);
+  let geoCodingPosition = await fetch(URLGeoCod + paramGeoCodingPosition);
+  let dataGeoPos = await geoCodingPosition.json();
+  console.log(dataGeoPos);
+  console.log(dataGeoPos.city);
+
+  cityName = dataGeoPos.city;
+  const paramMap = `map?key=${APIKEYMap}&center=${lat},${lon}&locations=${lat},${lon}&zoom=14&size=400,300&defaultMarker=marker-md-8950e8-f3b817-Y&banner=${cityName}&size=@2x`;
+  imgUrlMap = URLMap + paramMap;
+
+  document.getElementById('mapholder').innerHTML =
+    "<img src='" + imgUrlMap + "'>";
+}
 
 // create select ==================================================
 function createSel(cities) {
@@ -26,34 +77,32 @@ function createSel(cities) {
 }
 createSel(cities);
 
+// decodingPosition =============================================
+function decodingPosition() {}
+
 // weather data ==================================================
 
 async function getWeather() {
-  const cityId = document.querySelector('#city').value;
-  const paramFetchWeatcher = `weather?id=${cityId}&units=metric&appid=${APIKEY}`;
-  const paramFetchForecast = `forecast?id=${cityId}&units=metric&appid=${APIKEY}`;
-
-  const requestHeders = new Headers();
-  requestHeders.append('apikey', APIKEY);
-
-  const resWeatcher = await fetch(URL + paramFetchWeatcher);
-  const resForecast = await fetch(URL + paramFetchForecast);
-
-  const dataWeather = await resWeatcher.json();
-  const dataForecast = await resForecast.json();
-  console.log(dataWeather);
-  console.log(dataForecast);
-
-  showWeather(dataWeather);
-  showForecast(dataForecast);
-  return (cityMap = dataWeather);
+  // const cityId = document.querySelector('#city').value;
+  // console.log(lat, lon);
+  // const paramFetchWeatcher = `weather?lat=${lat}&lon=${lon}&units=metric&appid=${APIKEY}`;
+  // // const paramFetchWeatcher = `weather?id=${cityId}&units=metric&appid=${APIKEY}`;
+  // const paramFetchForecast = `forecast?id=${cityId}&units=metric&appid=${APIKEY}`;
+  // // const paramFetchForecast = `forecast?id=${cityId}&units=metric&appid=${APIKEY}`;
+  // const resWeatcher = await fetch(URL + paramFetchWeatcher);
+  // const resForecast = await fetch(URL + paramFetchForecast);
+  // const dataWeather = await resWeatcher.json();
+  // const dataForecast = await resForecast.json();
+  // console.log(dataWeather);
+  // console.log(dataForecast);
+  // showWeather(dataWeather);
+  // showForecast(dataForecast);
   // fetch=================================================
   // fetch(param.URL + paramFetch)
   //   .then((weather) => {
   //     return weather.json();
   //   })
   //   .then(showWeather)
-
   //   .catch(function () {
   //     //catch any errors
   //   });
@@ -179,4 +228,22 @@ function convertUnixToDateForecast(dataTimeZone, dataDt) {
   });
   return `${date} ${year} ${hour}`;
 }
-// console.log(convertUnixToDate(unixTimestamp));
+
+// Handling Errors and Rejections  ============================================
+function showError(error) {
+  console.log(error);
+  switch (error.code) {
+    case error.PERMISSION_DENIED:
+      x.innerHTML = 'User denied the request for Geolocation.';
+      break;
+    case error.POSITION_UNAVAILABLE:
+      x.innerHTML = 'Location information is unavailable.';
+      break;
+    case error.TIMEOUT:
+      x.innerHTML = 'The request to get user location timed out.';
+      break;
+    case error.UNKNOWN_ERROR:
+      x.innerHTML = 'An unknown error occurred.';
+      break;
+  }
+}
