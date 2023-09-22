@@ -95,19 +95,21 @@ function showWeather(data) {
   pressure.innerHTML = 'Pressure: ' + dataWeather.pressure;
 }
 
-function showForecast(data) {
+function showForecast(data, timeDay) {
   // console.log(data);
   // let dateUnixToDate = convertUnixToDateForecast(
   //   data.city.timezone,
   //   data.list[0].dt
   // );
 
-  let dt = data.list[6].dt_txt.split(' ');
-  console.log(dt);
+  timeDay = 5; //////////!!!!!!!!!!!!!!!!!!!!!! выбор времени даты
+  let dt = data.list[timeDay].dt_txt.split(' ');
+  console.log(dt); // ['2023-09-22', '12:00:00']
+  console.log(dt[1].slice(0, -3)); // 12:00
 
   // const dataForecast = {
   //   icon: data.list[0].weather[0].icon, // 9.00 am
-  // dt: dateUnixToDate,
+  // dt: dt,
   //   temp: data.main.temp,
   //   name: data.name,
   //   description: data.weather[0].description,
