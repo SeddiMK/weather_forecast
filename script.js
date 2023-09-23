@@ -5,113 +5,12 @@ const cities = {
   5435464: 'Pueblo',
   5188029: 'East Pittsburgh',
 };
-let cityName;
-let lat;
-let lon;
 const selectWrapper = document.querySelector('.out__select-wrapper');
 const out = document.querySelector('.out');
-
-// Using the Geolocation API ===============================================
-const geolocOut = document.getElementById('demo');
-
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition, showError);
-  } else {
-    geolocOut.innerHTML = 'Geolocation is not supported by this browser.';
-  }
-}
-
-getLocation();
-
-//Displaying the Result in a Map ============================================
-async function showPosition(position) {
-  lat = position.coords.latitude;
-  lon = position.coords.longitude;
-  const paramGeoCodingPosition = `reverse-geocode?latitude=${lat}&longitude=${lon}&localityLanguage=en&key=${APIKEYGeoCod}`;
-  // const cityId = document.querySelector('#city').value;
-
-  const paramFetchWeatcher = `weather?lat=${lat}&lon=${lon}&units=metric&appid=${APIKEY}`;
-  // const paramFetchWeatcher = `weather?id=${cityId}&units=metric&appid=${APIKEY}`;
-  const paramFetchForecast = `forecast?lat=${lat}&lon=${lon}&units=metric&appid=${APIKEY}`;
-  // const paramFetchForecast = `forecast?id=${cityId}&units=metric&appid=${APIKEY}`;
-
-  const resWeatcher = await fetch(URL + paramFetchWeatcher);
-  const resForecast = await fetch(URL + paramFetchForecast);
-
-  const dataWeather = await resWeatcher.json();
-  const dataForecast = await resForecast.json();
-  console.log(dataWeather);
-  console.log(dataForecast);
-
-  showWeather(dataWeather);
-  showForecast(dataForecast);
-  let geoCodingPosition = await fetch(URLGeoCod + paramGeoCodingPosition);
-  let dataGeoPos = await geoCodingPosition.json();
-  console.log(dataGeoPos);
-  console.log(dataGeoPos.city);
-
-  cityName = dataGeoPos.city;
-  const paramMap = `map?key=${APIKEYMap}&center=${lat},${lon}&locations=${lat},${lon}&zoom=14&size=400,300&defaultMarker=marker-md-8950e8-f3b817-Y&banner=${cityName}&size=@2x`;
-  imgUrlMap = URLMap + paramMap;
-
-  document.getElementById('mapholder').innerHTML =
-    "<img src='" + imgUrlMap + "'>";
-}
-
-// create select ==================================================
-function createSel(cities) {
-  const select = document.createElement('select');
-  select.classList.add('main-weather__city-selection');
-  select.setAttribute('id', 'city');
-
-  for (let key in cities) {
-    let option = document.createElement('option');
-    option.value = key;
-    option.innerHTML = cities[key];
-    // select.append(option);
-    select.add(option, null);
-  }
-
-  selectWrapper.prepend(select);
-}
-createSel(cities);
-
-// decodingPosition =============================================
-function decodingPosition() {}
-
-// weather data ==================================================
-
-async function getWeather() {
-  // const cityId = document.querySelector('#city').value;
-  // console.log(lat, lon);
-  // const paramFetchWeatcher = `weather?lat=${lat}&lon=${lon}&units=metric&appid=${APIKEY}`;
-  // // const paramFetchWeatcher = `weather?id=${cityId}&units=metric&appid=${APIKEY}`;
-  // const paramFetchForecast = `forecast?id=${cityId}&units=metric&appid=${APIKEY}`;
-  // // const paramFetchForecast = `forecast?id=${cityId}&units=metric&appid=${APIKEY}`;
-  // const resWeatcher = await fetch(URL + paramFetchWeatcher);
-  // const resForecast = await fetch(URL + paramFetchForecast);
-  // const dataWeather = await resWeatcher.json();
-  // const dataForecast = await resForecast.json();
-  // console.log(dataWeather);
-  // console.log(dataForecast);
-  // showWeather(dataWeather);
-  // showForecast(dataForecast);
-  // fetch=================================================
-  // fetch(param.URL + paramFetch)
-  //   .then((weather) => {
-  //     return weather.json();
-  //   })
-  //   .then(showWeather)
-  //   .catch(function () {
-  //     //catch any errors
-  //   });
-}
-getWeather();
-
-document.querySelector('#city').onchange = getWeather;
+const metricSel = document.querySelector('#metric');
 
 // weather data output===================================================
+
 let divImg = out.querySelector('div.out__icon');
 let temp = out.querySelector('h3.out__temp');
 let nameCity = out.querySelector('.out__name-city');
@@ -120,27 +19,131 @@ let windDeg = out.querySelector('.out__wind-deg');
 let windSpeed = out.querySelector('.out__wind-speed');
 let pressure = out.querySelector('.out__pressure');
 
-function showWeather(data) {
-  // console.log(data);
-  let dateUnixToDate = convertUnixToDate(data.timezone, data.dt);
+// Using the Geolocation API ===============================================
+const geolocOut = document.getElementById('location-sapport');
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosWeatForecast, showError);
+  } else {
+    geolocOut.innerHTML = 'Geolocation is not supported by this browser.';
+  }
+}
+getLocation();
+
+// Metric and Imperial system ============================================
+
+let metricSys = 'metric';
+
+metricSel.addEventListener('change', (metricSysVal) => {
+  metricSysVal = document.querySelector('#metric').value;
+  metricSys = metricSysVal;
+  getLocation();
+});
+
+//Displaying the Result in a Map ============================================
+async function showPosWeatForecast(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  const paramGeoCodingPosition = `reverse-geocode?latitude=${lat}&longitude=${lon}&localityLanguage=en&key=${APIKEYGeoCod}`;
+
+  const paramFetchWeatcher = `weather?lat=${lat}&lon=${lon}&units=${metricSys}&appid=${APIKEY}`;
+  const paramFetchForecast = `forecast?lat=${lat}&lon=${lon}&units=${metricSys}&appid=${APIKEY}`;
+
+  const resWeatcher = await fetch(URL + paramFetchWeatcher);
+  const resForecast = await fetch(URL + paramFetchForecast);
+
+  const dataW = await resWeatcher.json();
+  const dataForecast = await resForecast.json();
+
+  let geoCodingPosition = await fetch(URLGeoCod + paramGeoCodingPosition);
+  let dataGeoPos = await geoCodingPosition.json();
+
+  console.log(dataGeoPos); //============================================
+  console.log(dataW); //============================================
+  console.log(dataForecast); //============================================
+
+  showWeather(dataW, dataGeoPos);
+  showForecast(dataForecast);
+  cityName = dataGeoPos.city;
+  const paramMap = `map?key=${APIKEYMap}&center=${lat},${lon}&locations=${lat},${lon}&zoom=14&size=400,300&defaultMarker=marker-md-8950e8-f3b817-Y&banner=${cityName}&size=@2x`;
+  imgUrlMap = URLMap + paramMap;
+
+  document.getElementById('mapholder').innerHTML =
+    "<img src='" + imgUrlMap + "'>";
+}
+
+// // create select ==================================================
+// function createSel(cities) {
+//   const select = document.createElement('select');
+//   select.classList.add('main-weather__city-selection');
+//   select.setAttribute('id', 'city');
+
+//   for (let key in cities) {
+//     let option = document.createElement('option');
+//     option.value = key;
+//     option.innerHTML = cities[key];
+//     // select.append(option);
+//     select.add(option, null);
+//   }
+
+//   selectWrapper.prepend(select);
+// }
+// createSel(cities);
+
+// weather data ==================================================
+
+// async function getWeather() {
+//   // const cityId = document.querySelector('#city').value;
+//   // console.log(lat, lon);
+//   // const paramFetchWeatcher = `weather?lat=${lat}&lon=${lon}&units=metric&appid=${APIKEY}`;
+//   // // const paramFetchWeatcher = `weather?id=${cityId}&units=metric&appid=${APIKEY}`;
+//   // const paramFetchForecast = `forecast?id=${cityId}&units=metric&appid=${APIKEY}`;
+//   // // const paramFetchForecast = `forecast?id=${cityId}&units=metric&appid=${APIKEY}`;
+//   // const resWeatcher = await fetch(URL + paramFetchWeatcher);
+//   // const resForecast = await fetch(URL + paramFetchForecast);
+//   // const dataWeather = await resWeatcher.json();
+//   // const dataForecast = await resForecast.json();
+//   // console.log(dataWeather);
+//   // console.log(dataForecast);
+//   // showWeather(dataWeather);
+//   // showForecast(dataForecast);
+//   // fetch=================================================
+//   // fetch(param.URL + paramFetch)
+//   //   .then((weather) => {
+//   //     return weather.json();
+//   //   })
+//   //   .then(showWeather)
+//   //   .catch(function () {
+//   //     //catch any errors
+//   //   });
+// }
+// getWeather();
+
+// document.querySelector('#city').onchange = getWeather;
+
+function showWeather(dataW, dataGeoPos) {
+  console.log(dataGeoPos);
+  let dateUnixToDate = convertUnixToDate(dataW.timezone, dataW.dt);
 
   const dataWeather = {
-    icon: data.weather[0].icon,
-    temp: data.main.temp,
-    name: data.name,
+    icon: dataW.weather[0].icon,
+    temp: dataW.main.temp,
+    name: dataGeoPos.city,
     dt: dateUnixToDate,
-    description: data.weather[0].description,
-    windDeg: data.wind.deg,
-    windSpeed: data.wind.speed,
-    pressure: data.main.pressure,
+    description: dataW.weather[0].description,
+    windDeg: dataW.wind.deg,
+    windSpeed: dataW.wind.speed,
+    pressure: dataW.main.pressure,
   };
-  console.log(data.dt);
+  // console.log(data.dt);
 
-  console.log(dateUnixToDate);
+  // console.log(dateUnixToDate);
 
-  console.log(dataWeather.name);
+  // console.log(dataWeather.name);
 
   divImg.innerHTML = `<img class='out-icon' src='https://openweathermap.org/img/wn/${dataWeather.icon}@2x.png' alt='Image Watcher'>`;
+
   temp.innerHTML = Math.round(dataWeather.temp) + '&deg;';
   nameCity.innerHTML = 'Weather in ' + dataWeather.name;
   description.innerHTML = 'Description: ' + dataWeather.description;
