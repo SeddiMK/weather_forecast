@@ -10,43 +10,56 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>Weather</h1>
-        <h2><a href="" target="_blank">web.egorovm@gmail.com</a></h2>
-        <p>Weatcher_1</p>
-        <p id="location-sapport">Geolocation is supported by this browser.</p>
-        <div class="weather-block">
-            <h2 class="weather-block__title">Weather in city</h2>
-            <div class="weather-block__main main-weather">
+    <div class="wrapper">
+        <img src="/image/bg/luiz_ozero_gory_118841_2560x1600.jpg" class="background" />
+        <div class="container">
+            <section class="weather">
+                <h1>Weather</h1>
+                <h2><a href="" target="_blank">web.egorovm@gmail.com</a></h2>
+                <p>Weatcher_1</p>
+                <p id="location-sapport">Geolocation is supported by this browser.</p>
+                <div class="weather-block">
+                    <h2 class="weather-block__title">Weather in city</h2>
+                    <div class="weather-block__main main-weather">
 
-                <select class="main-weather__units-selection" name="metric" id="metric">
-                    <option value="metric">Metric system</option>
-                    <option value="imperial">Imperial system</option>
+                        <select class="main-weather__units-selection" name="metric" id="metric">
+                            <option value="metric">Metric system in C&deg;
+                            </option>
+                            <option value="imperial">Imperial system in F
+                            </option>
 
-                </select>
-                <div class="main-weather__out out">
-                    <!-- <div class="out__select-wrapper"></div> -->
-                    <div class="out__icon-temp-block">
-                        <h3 class="out__temp"></h3>
-                        <div class="out__icon"></div>
+                        </select>
+                        <div class="main-weather__out out">
+                            <!-- <div class="out__select-wrapper"></div> -->
+                            <div class="out__icon-temp-block">
+                                <h3 class="out__temp"></h3>
+                                <div class="out__icon"></div>
 
+                            </div>
+                            <h3 class="out__name-city"></h3>
+                            <p class="out__data">2023-09-30</p>
+                            <p class="out__description"></p>
+                            <p class="out__wind-deg"></p>
+                            <p class="out__wind-speed"></p>
+                            <p class="out__pressure"></p>
+                        </div>
                     </div>
-                    <h3 class="out__name-city"></h3>
-                    <p class="out__description"></p>
-                    <p class="out__wind-deg"></p>
-                    <p class="out__wind-speed"></p>
-                    <p class="out__pressure"></p>
                 </div>
-            </div>
+
+                <div id="mapholder"></div>
+
+                <div id="openweathermap-widget-1"></div>
+            </section>
+
+
+
         </div>
-
-        <div id="mapholder"></div>
-
     </div>
-
     <script src="config.js"></script>
     <!-- <script src="location.js"></script> -->
     <script src="script.js"></script>
+    <script src='//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script>
+    <!-- <script src="winget-watcher.js"></script> -->
 
 
 </body>

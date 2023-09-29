@@ -1,10 +1,10 @@
-const cities = {
-  4047198: 'Brighton',
-  4697070: 'Henderson County',
-  5437682: 'San Luis',
-  5435464: 'Pueblo',
-  5188029: 'East Pittsburgh',
-};
+// const cities = {
+//   4047198: 'Brighton',
+//   4697070: 'Henderson County',
+//   5437682: 'San Luis',
+//   5435464: 'Pueblo',
+//   5188029: 'East Pittsburgh',
+// };
 const selectWrapper = document.querySelector('.out__select-wrapper');
 const out = document.querySelector('.out');
 const metricSel = document.querySelector('#metric');
@@ -69,10 +69,6 @@ async function showPosWeatForecast(position) {
   let geoCodingPosition = await fetch(URLGeoCod + paramGeoCodingPosition);
   let dataGeoPos = await geoCodingPosition.json();
 
-  console.log(dataGeoPos + 'dataGeoPos'); //============================================
-  console.log(dataW + 'dataW'); //============================================
-  console.log(dataForecast + 'dataForecast'); //=====================================
-
   showWeather(dataW, dataGeoPos);
   showForecast(dataForecast);
   cityName = dataGeoPos.city;
@@ -133,10 +129,12 @@ async function showPosWeatForecast(position) {
 // document.querySelector('#city').onchange = getWeather;
 
 function showWeather(dataW, dataGeoPos) {
-  console.log(dataGeoPos);
+  console.log(dataW);
+  // console.log(dataGeoPos);
   let dateUnixToDate = convertUnixToDate(dataW.timezone, dataW.dt);
 
   const dataWeather = {
+    id: dataW.id,
     icon: dataW.weather[0].icon,
     temp: dataW.main.temp,
     name: dataGeoPos.city,
@@ -161,6 +159,25 @@ function showWeather(dataW, dataGeoPos) {
   windDeg.innerHTML = 'Wind deg: ' + dataWeather.windDeg;
   windSpeed.innerHTML = 'Wind speed: ' + dataWeather.windSpeed;
   pressure.innerHTML = 'Pressure: ' + dataWeather.pressure;
+
+  // widjet watcher ==========================================================
+  window.myWidgetParam ? window.myWidgetParam : (window.myWidgetParam = []);
+  window.myWidgetParam.push({
+    id: 1,
+    cityid: dataWeather.id,
+    appid: APIKEY,
+    units: metricSys,
+    containerid: 'openweathermap-widget-1',
+  });
+  (function () {
+    var script = document.createElement('script');
+    script.async = true;
+    script.charset = 'utf-8';
+    script.src =
+      '//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(script, s);
+  })();
 }
 
 function showForecast(data, timeDay) {
@@ -171,9 +188,9 @@ function showForecast(data, timeDay) {
   // );
 
   timeDay = 5; //////////!!!!!!!!!!!!!!!!!!!!!! выбор времени даты
-  // let dt = data.list[timeDay].dt_txt.split(' ');
-  // console.log(dt); // ['2023-09-22', '12:00:00']
-  // console.log(dt[1].slice(0, -3)); // 12:00
+  let dt = data.list[timeDay].dt_txt.split(' ');
+  console.log(dt); // ['2023-09-22', '12:00:00']
+  console.log(dt[1].slice(0, -3)); // 12:00
 
   // const dataForecast = {
   //   icon: data.list[0].weather[0].icon, // 9.00 am
