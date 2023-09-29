@@ -50,18 +50,28 @@ async function showPosWeatForecast(position) {
   const paramFetchWeatcher = `weather?lat=${lat}&lon=${lon}&units=${metricSys}&appid=${APIKEY}`;
   const paramFetchForecast = `forecast?lat=${lat}&lon=${lon}&units=${metricSys}&appid=${APIKEY}`;
 
-  const resWeatcher = await fetch(URL + paramFetchWeatcher);
-  const resForecast = await fetch(URL + paramFetchForecast);
+  let dataW;
+  let dataForecast;
 
-  const dataW = await resWeatcher.json();
-  const dataForecast = await resForecast.json();
+  try {
+    const resWeatcher = await fetch(URL + paramFetchWeatcher);
+    dataW = await resWeatcher.json();
+  } catch (error) {
+    console.error(error);
+  }
+  try {
+    const resForecast = await fetch(URL + paramFetchForecast);
+    dataForecast = await resForecast.json();
+  } catch (error) {
+    console.error(error);
+  }
 
   let geoCodingPosition = await fetch(URLGeoCod + paramGeoCodingPosition);
   let dataGeoPos = await geoCodingPosition.json();
 
-  console.log(dataGeoPos); //============================================
-  console.log(dataW); //============================================
-  console.log(dataForecast); //============================================
+  console.log(dataGeoPos + 'dataGeoPos'); //============================================
+  console.log(dataW + 'dataW'); //============================================
+  console.log(dataForecast + 'dataForecast'); //=====================================
 
   showWeather(dataW, dataGeoPos);
   showForecast(dataForecast);
@@ -136,6 +146,7 @@ function showWeather(dataW, dataGeoPos) {
     windSpeed: dataW.wind.speed,
     pressure: dataW.main.pressure,
   };
+
   // console.log(data.dt);
 
   // console.log(dateUnixToDate);
@@ -160,9 +171,9 @@ function showForecast(data, timeDay) {
   // );
 
   timeDay = 5; //////////!!!!!!!!!!!!!!!!!!!!!! выбор времени даты
-  let dt = data.list[timeDay].dt_txt.split(' ');
-  console.log(dt); // ['2023-09-22', '12:00:00']
-  console.log(dt[1].slice(0, -3)); // 12:00
+  // let dt = data.list[timeDay].dt_txt.split(' ');
+  // console.log(dt); // ['2023-09-22', '12:00:00']
+  // console.log(dt[1].slice(0, -3)); // 12:00
 
   // const dataForecast = {
   //   icon: data.list[0].weather[0].icon, // 9.00 am
@@ -175,6 +186,8 @@ function showForecast(data, timeDay) {
   //   pressure: data.main.pressure,
   // };
 }
+
+// convertUnixToDate ============================================
 
 function convertUnixToDate(dataTimeZone, dataDt) {
   const objData = {};
