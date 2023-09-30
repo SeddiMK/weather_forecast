@@ -11,7 +11,7 @@
 
 <body>
     <div class="wrapper">
-        <img src="/image/bg/luiz_ozero_gory_118841_2560x1600.jpg" class="background" />
+        <!-- <img src="/image/bg/luiz_ozero_gory_118841_2560x1600.jpg" class="background" /> -->
         <div class="container">
             <section class="weather">
                 <h1>Weather</h1>
@@ -36,14 +36,74 @@
                                 <div class="out__icon"></div>
 
                             </div>
+
                             <h3 class="out__name-city"></h3>
                             <p class="out__data">2023-09-30</p>
+
                             <p class="out__description"></p>
                             <p class="out__wind-deg"></p>
                             <p class="out__wind-speed"></p>
                             <p class="out__pressure"></p>
                         </div>
+
+                        <button type="button" class="out__open-spoiler">Click to show 5 day forecast</button>
+
+                        <div class="main-weather__spoiler collapse">
+                            <div class="spoiler__item">
+                                <h4>Date</h4>
+                                <div class="spoiler__block-tmp">
+                                    <h4>Temp</h4>
+                                    <div class="spoiler__icon">Icon</div>
+                                </div>
+
+                            </div>
+                            <div class="spoiler__item">
+                                <h4>Date</h4>
+                                <div class="spoiler__block-tmp">
+                                    <h4>Temp</h4>
+                                    <div class="spoiler__icon">Icon</div>
+                                </div>
+
+                            </div>
+                            <div class="spoiler__item">
+                                <h4>Date</h4>
+                                <div class="spoiler__block-tmp">
+                                    <h4>Temp</h4>
+                                    <div class="spoiler__icon">Icon</div>
+                                </div>
+
+                            </div>
+                            <div class="spoiler__item">
+                                <h4>Date</h4>
+                                <div class="spoiler__block-tmp">
+                                    <h4>Temp</h4>
+                                    <div class="spoiler__icon">Icon</div>
+                                </div>
+
+                            </div>
+                            <div class="spoiler__item">
+                                <h4>Date</h4>
+                                <div class="spoiler__block-tmp">
+                                    <h4>Temp</h4>
+                                    <div class="spoiler__icon">Icon</div>
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
+
+                    <!-- <div data-spollers class="spollers">
+                        <div class="spollers__item">
+                            <button type="button" data-spoller class="spollers__title">Заголовок
+                                спойлера</button>
+                            <div class="spollers__body">Контент спойлера
+                                <ul class="spollers__row">
+                                    li.spoller
+                                </ul>
+                            </div>
+                        </div>
+                    </div> -->
                 </div>
 
                 <div id="mapholder"></div>
@@ -55,8 +115,10 @@
 
         </div>
     </div>
+    <script src="ItcCollapse.js"></script>
     <script src="config.js"></script>
     <!-- <script src="location.js"></script> -->
+
     <script src="script.js"></script>
     <script src='//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script>
     <!-- <script src="winget-watcher.js"></script> -->

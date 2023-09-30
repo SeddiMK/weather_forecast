@@ -129,8 +129,6 @@ async function showPosWeatForecast(position) {
 // document.querySelector('#city').onchange = getWeather;
 
 function showWeather(dataW, dataGeoPos) {
-  console.log(dataW);
-  // console.log(dataGeoPos);
   let dateUnixToDate = convertUnixToDate(dataW.timezone, dataW.dt);
 
   const dataWeather = {
@@ -153,7 +151,13 @@ function showWeather(dataW, dataGeoPos) {
 
   divImg.innerHTML = `<img class='out-icon' src='https://openweathermap.org/img/wn/${dataWeather.icon}@2x.png' alt='Image Watcher'>`;
 
-  temp.innerHTML = Math.round(dataWeather.temp) + '&deg;';
+  // K and gradus
+  let tempMetric = 'K';
+  if (metricSys === 'metric') {
+    tempMetric = '&deg;';
+  }
+
+  temp.innerHTML = Math.round(dataWeather.temp) + tempMetric;
   nameCity.innerHTML = 'Weather in ' + dataWeather.name;
   description.innerHTML = 'Description: ' + dataWeather.description;
   windDeg.innerHTML = 'Wind deg: ' + dataWeather.windDeg;
@@ -180,30 +184,62 @@ function showWeather(dataW, dataGeoPos) {
   })();
 }
 
-function showForecast(data, timeDay) {
-  // console.log(data);
-  // let dateUnixToDate = convertUnixToDateForecast(
-  //   data.city.timezone,
-  //   data.list[0].dt
-  // );
+const spoiler = document.querySelector('.out__open-spoiler');
+const spoilerOpen = document.querySelector('.main-weather__spoiler');
+// инициализируем его как ItcCollapse
+const collapse = new ItcCollapse(spoilerOpen, 500);
+// // показать контент
+// collapse.show();
+// // // скрыть контент
+// collapse.hide();
+// переключить видимость контента
+// collapse.toggle();
 
-  timeDay = 5; //////////!!!!!!!!!!!!!!!!!!!!!! выбор времени даты
-  let dt = data.list[timeDay].dt_txt.split(' ');
-  console.log(dt); // ['2023-09-22', '12:00:00']
-  console.log(dt[1].slice(0, -3)); // 12:00
+function showForecast(data) {
+  // timeDay = 5; //////////!!!!!!!!!!!!!!!!!!!!!! выбор времени даты
+  // let dt = data.list[timeDay].dt_txt.split(' ');
+  // console.log(dt); // ['2023-09-22', '12:00:00']
+  // console.log(dt[1].slice(0, -3)); // 12:00
 
-  // const dataForecast = {
-  //   icon: data.list[0].weather[0].icon, // 9.00 am
-  // dt: dt,
-  //   temp: data.main.temp,
-  //   name: data.name,
-  //   description: data.weather[0].description,
-  //   windDeg: data.wind.deg,
-  //   windSpeed: data.wind.speed,
-  //   pressure: data.main.pressure,
-  // };
+  // spollers
+
+  console.log('spoler work');
+  // if (spoilerOpen) spoilerOpen.classList.toggle('spoiler-open');
+
+  const spolersItem = document.querySelectorAll('.spoiler__item');
+  let spoilerItemDate;
+  let spoilerItemTemp;
+  let spoilerItemIcon;
+  const arrDay = [9, 17, 25, 33, 39]; // day 12.00
+
+  if (spolersItem.length) {
+    spolersItem.forEach((item, ind) => {
+      spoilerItemDate = item.querySelector('.spoiler__item>h4');
+      spoilerItemTemp = item.querySelector('.spoiler__block-tmp>h4');
+      spoilerItemIcon = item.querySelector(
+        '.spoiler__block-tmp>.spoiler__icon'
+      );
+
+      let dt = data.list[arrDay[ind]].dt_txt.split(' ')[0];
+      let temp = data.list[arrDay[ind]].main.temp;
+      let icon = data.list[arrDay[ind]].weather[0].icon;
+
+      // K and gradus
+      let tempMetric = 'K';
+      if (metricSys === 'metric') {
+        tempMetric = '&deg;';
+      }
+      spoilerItemTemp.innerHTML = Math.round(temp) + tempMetric;
+      spoilerItemDate.innerHTML = dt;
+      spoilerItemIcon.innerHTML = `<img class='out-icon' src='https://openweathermap.org/img/wn/${icon}@2x.png' alt='Image Watcher'>`;
+    });
+  }
 }
 
+spoiler.addEventListener('click', () => {
+  showForecast();
+  // collapse.toggle();
+});
 // convertUnixToDate ============================================
 
 function convertUnixToDate(dataTimeZone, dataDt) {
