@@ -186,14 +186,13 @@ function showWeather(dataW, dataGeoPos) {
 
 const spoiler = document.querySelector('.out__open-spoiler');
 const spoilerOpen = document.querySelector('.main-weather__spoiler');
-// инициализируем его как ItcCollapse
-const collapse = new ItcCollapse(spoilerOpen, 500);
-// // показать контент
-// collapse.show();
-// // // скрыть контент
-// collapse.hide();
-// переключить видимость контента
-// collapse.toggle();
+
+// if (spoilerOpen) spoilerOpen.classList.toggle('spoiler-open');
+spoiler.addEventListener('click', () => {
+  spoilerOpen.slideToggle(200);
+});
+
+const spolersItem = document.querySelectorAll('.spoiler__item');
 
 function showForecast(data) {
   // timeDay = 5; //////////!!!!!!!!!!!!!!!!!!!!!! выбор времени даты
@@ -201,12 +200,8 @@ function showForecast(data) {
   // console.log(dt); // ['2023-09-22', '12:00:00']
   // console.log(dt[1].slice(0, -3)); // 12:00
 
-  // spollers
-
   console.log('spoler work');
-  // if (spoilerOpen) spoilerOpen.classList.toggle('spoiler-open');
 
-  const spolersItem = document.querySelectorAll('.spoiler__item');
   let spoilerItemDate;
   let spoilerItemTemp;
   let spoilerItemIcon;
@@ -236,10 +231,6 @@ function showForecast(data) {
   }
 }
 
-spoiler.addEventListener('click', () => {
-  showForecast();
-  // collapse.toggle();
-});
 // convertUnixToDate ============================================
 
 function convertUnixToDate(dataTimeZone, dataDt) {
