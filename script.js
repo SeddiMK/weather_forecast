@@ -187,9 +187,9 @@ function showWeather(dataW, dataGeoPos) {
 const spoiler = document.querySelector('.out__open-spoiler');
 const spoilerOpen = document.querySelector('.main-weather__spoiler');
 
-// if (spoilerOpen) spoilerOpen.classList.toggle('spoiler-open');
 spoiler.addEventListener('click', () => {
-  spoilerOpen.slideToggle(200);
+  if (spoiler) spoiler.classList.toggle('spoiler-open');
+  spoilerOpen.slideToggle(300);
 });
 
 const spolersItem = document.querySelectorAll('.spoiler__item');

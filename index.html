@@ -29,67 +29,75 @@
                             </option>
 
                         </select>
+
                         <div class="main-weather__out out">
-                            <!-- <div class="out__select-wrapper"></div> -->
-                            <div class="out__icon-temp-block">
-                                <h3 class="out__temp"></h3>
-                                <div class="out__icon"></div>
+                            <div class="out__weatcher">
+                                <!-- <div class="out__select-wrapper"></div> -->
+                                <div class="out__icon-temp-block">
+                                    <h3 class="out__temp"></h3>
+                                    <div class="out__icon"></div>
 
+                                </div>
+
+                                <h3 class="out__name-city"></h3>
+                                <p class="out__data">2023-09-30</p>
+
+                                <p class="out__description"></p>
+                                <p class="out__wind-deg"></p>
+                                <p class="out__wind-speed"></p>
+                                <p class="out__pressure"></p>
                             </div>
-
-                            <h3 class="out__name-city"></h3>
-                            <p class="out__data">2023-09-30</p>
-
-                            <p class="out__description"></p>
-                            <p class="out__wind-deg"></p>
-                            <p class="out__wind-speed"></p>
-                            <p class="out__pressure"></p>
+                            <div class="out__map">
+                                <div id="mapholder" class="out__map-holder">This is where you are.</div>
+                            </div>
                         </div>
 
-                        <button type="button" class="out__open-spoiler">Click to show 5 day forecast</button>
+                        <div class="main-weather__forecast-spoiler">
+                            <button type="button" class="out__open-spoiler">Click to show 5 day forecast</button>
+                            <div class="main-weather__spoiler">
+                                <div class="spoiler__item">
+                                    <h4>Date</h4>
+                                    <div class="spoiler__block-tmp">
+                                        <h4>Temp</h4>
+                                        <div class="spoiler__icon">Icon</div>
+                                    </div>
 
-                        <div class="main-weather__spoiler">
-                            <div class="spoiler__item">
-                                <h4>Date</h4>
-                                <div class="spoiler__block-tmp">
-                                    <h4>Temp</h4>
-                                    <div class="spoiler__icon">Icon</div>
                                 </div>
+                                <div class="spoiler__item">
+                                    <h4>Date</h4>
+                                    <div class="spoiler__block-tmp">
+                                        <h4>Temp</h4>
+                                        <div class="spoiler__icon">Icon</div>
+                                    </div>
 
-                            </div>
-                            <div class="spoiler__item">
-                                <h4>Date</h4>
-                                <div class="spoiler__block-tmp">
-                                    <h4>Temp</h4>
-                                    <div class="spoiler__icon">Icon</div>
                                 </div>
+                                <div class="spoiler__item">
+                                    <h4>Date</h4>
+                                    <div class="spoiler__block-tmp">
+                                        <h4>Temp</h4>
+                                        <div class="spoiler__icon">Icon</div>
+                                    </div>
 
-                            </div>
-                            <div class="spoiler__item">
-                                <h4>Date</h4>
-                                <div class="spoiler__block-tmp">
-                                    <h4>Temp</h4>
-                                    <div class="spoiler__icon">Icon</div>
                                 </div>
+                                <div class="spoiler__item">
+                                    <h4>Date</h4>
+                                    <div class="spoiler__block-tmp">
+                                        <h4>Temp</h4>
+                                        <div class="spoiler__icon">Icon</div>
+                                    </div>
 
-                            </div>
-                            <div class="spoiler__item">
-                                <h4>Date</h4>
-                                <div class="spoiler__block-tmp">
-                                    <h4>Temp</h4>
-                                    <div class="spoiler__icon">Icon</div>
                                 </div>
+                                <div class="spoiler__item">
+                                    <h4>Date</h4>
+                                    <div class="spoiler__block-tmp">
+                                        <h4>Temp</h4>
+                                        <div class="spoiler__icon">Icon</div>
+                                    </div>
 
-                            </div>
-                            <div class="spoiler__item">
-                                <h4>Date</h4>
-                                <div class="spoiler__block-tmp">
-                                    <h4>Temp</h4>
-                                    <div class="spoiler__icon">Icon</div>
                                 </div>
-
                             </div>
                         </div>
+
 
                     </div>
 
@@ -106,7 +114,6 @@
                     </div> -->
                 </div>
 
-                <div id="mapholder"></div>
 
                 <div id="openweathermap-widget-1"></div>
             </section>
