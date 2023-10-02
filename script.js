@@ -186,13 +186,20 @@ function showWeather(dataW, dataGeoPos) {
 
 const spoiler = document.querySelector('.out__open-spoiler');
 const spoilerOpen = document.querySelector('.main-weather__spoiler');
+const spolersItem = document.querySelectorAll('.spoiler__item');
+
+const widget = document.querySelector('.widget__title');
+const widgetOpen = document.querySelector('.widget__main');
 
 spoiler.addEventListener('click', () => {
   if (spoiler) spoiler.classList.toggle('spoiler-open');
   spoilerOpen.slideToggle(300);
 });
 
-const spolersItem = document.querySelectorAll('.spoiler__item');
+widget.addEventListener('click', () => {
+  if (widget) widget.classList.toggle('widget-open');
+  widgetOpen.slideToggle(300);
+});
 
 function showForecast(data) {
   // timeDay = 5; //////////!!!!!!!!!!!!!!!!!!!!!! выбор времени даты

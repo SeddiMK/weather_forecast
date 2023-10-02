@@ -6,18 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Weatcher_1</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="wrapper">
-        <!-- <img src="/image/bg/luiz_ozero_gory_118841_2560x1600.jpg" class="background" /> -->
+        <!-- <img src="/image/bg/luiz_ozero_gory_118841_2560x1600.jpg" class="background" alt="Nature picture mountains and water" /> -->
         <div class="container">
+            <a href="/" class="container__title">Weather</a>
             <section class="weather">
-                <h1>Weather</h1>
-                <h2><a href="" target="_blank">web.egorovm@gmail.com</a></h2>
-                <p>Weatcher_1</p>
-                <p id="location-sapport">Geolocation is supported by this browser.</p>
+
+                <p class="weather__location-sapport" id="location-sapport">Geolocation is supported by this browser.</p>
+
                 <div class="weather-block">
                     <h2 class="weather-block__title">Weather in city</h2>
                     <div class="weather-block__main main-weather">
@@ -53,7 +54,7 @@
                         </div>
 
                         <div class="main-weather__forecast-spoiler">
-                            <button type="button" class="out__open-spoiler">Click to show 5 day forecast</button>
+                            <div class="out__open-spoiler">Click to show 5 day forecast</div>
                             <div class="main-weather__spoiler">
                                 <div class="spoiler__item">
                                     <h4>Date</h4>
@@ -114,12 +115,30 @@
                     </div> -->
                 </div>
 
+                <div class="weather__widget widget">
+                    <p class="widget__title">Click here open Widget</p>
+                    <div class="widget__main" id="openweathermap-widget-1"></div>
+                </div>
 
-                <div id="openweathermap-widget-1"></div>
             </section>
 
 
+            <footer>
+                <div class="footer__about about-me">
+                    <p class="about-me__gmail">
+                        <i class='fa fa-google fa-2x'></i><a href="https://gmail.com"
+                            target="_blank">web.egorovm@gmail.com</a>
+                    </p>
+                    <p class="about-me__git"><i class="fa fa-github fa-2x"></i><a href="https://github.com/SeddiMK"
+                            target="_blank">https://github.com/SeddiMK</a></p>
+                    <p class="about-me__linkedin"><i class="fa fa-linkedin fa-2x"></i><a
+                            href="https://linkedin.com/in/maksim-egorov-407805235" target="_blank">linkedin</a></p>
+                    <p class="about-me__facebook"><i class="fa fa-facebook fa-2x"></i><a
+                            href="https://https://www.facebook.com/profile.php?id=100079735658529"
+                            target="_blank">facebook</a></p>
 
+                </div>
+            </footer>
         </div>
     </div>
     <script src="slide-toggle.js"></script>

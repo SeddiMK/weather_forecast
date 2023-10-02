@@ -242,13 +242,11 @@ select {
     background-color: #000;
     position: absolute;
     top: 9px;
-    transition: transform 0.3 ease 0s;
-    overflow: hidden;
+    transition: transform 0.3s ease 0s;
 }
 
 .out__open-spoiler::before {
     transform: rotate(40deg);
-
     left: 0;
 }
 
@@ -260,12 +258,20 @@ select {
 
 .out__open-spoiler.spoiler-open::before,
 .out__open-spoiler.spoiler-open::after {
-    background-color: red;
+    background-color: rgba(175, 74, 195, 0.5);
 }
+
+.out__open-spoiler.spoiler-open::before {
+    transform: rotate(-40deg);
+}
+
+.out__open-spoiler.spoiler-open::after {
+    transform: rotate(40deg);
+}
+
 
 .main-weather__spoiler {
     border-radius: 0.4rem;
-    padding: 1rrem;
     display: none;
     align-items: center;
     justify-content: flex-start;
@@ -293,3 +299,72 @@ select {
 }
 
 .spoiler__icon {}
+
+/* widget =============================================== */
+.weather__widget {}
+
+.widget {}
+
+.widget__title {
+    position: relative;
+    cursor: pointer;
+    padding: 0.7rem 0px 0.7rem 30px;
+}
+
+.widget__title::before,
+.widget__title::after {
+    content: '';
+    width: 10px;
+    height: 1px;
+    background-color: #000;
+    position: absolute;
+    top: 19px;
+    transition: transform 0.3s ease 0s;
+}
+
+.widget__title::before {
+    transform: rotate(40deg);
+    left: 0;
+}
+
+.widget__title::after {
+    transform: rotate(-40deg);
+    left: 8px;
+}
+
+
+.widget__title.widget-open::before,
+.widget__title.widget-open::after {
+    background-color: rgba(175, 74, 195, 0.5);
+}
+
+.widget__title.widget-open::before {
+    transform: rotate(-40deg);
+}
+
+.widget__title.widget-open::after {
+    transform: rotate(40deg);
+}
+
+.widget__main {
+    border-radius: 0.4rem;
+    display: none;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    transition: height 0.3s ease-out;
+}
+
+/* footer =========================================================== */
+.footer__about {}
+
+.about-me {}
+
+.about-me__gmail {}
+
+.about-me__git {}
+
+.about-me__linkedin {}
+
+.about-me__facebook {}
