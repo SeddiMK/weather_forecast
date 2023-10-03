@@ -1,4 +1,13 @@
 /* start null style  */
+:root {
+    box-sizing: border-box;
+    font-size: calc(1vw + 0.2em);
+
+    --min-width: 1080px;
+    --base-color: #370;
+    --base-font: 'Trebuchet MS', sans-serif;
+}
+
 * {
     padding: 0px;
     margin: 0px;
@@ -24,14 +33,14 @@ a:active {
 html,
 body {
     height: 100%;
-    /* min-width: $minWidth + px; */
+    min-width: var(--min-width);
 }
 
 body {
     /* color: $mainColor; */
     line-height: 1;
-    /* font-family: $fontFamily; */
-    /* font-size: $fontSize; */
+    font-family: var(--base-font);
+
     /* //text-rendering: optimizeLegibility; */
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
@@ -43,7 +52,7 @@ body {
 input,
 button,
 textarea {
-    /* font-family: $fontFamily; */
+    font-family: var(--base-font);
     font-size: inherit;
 }
 
@@ -89,10 +98,8 @@ h6 {
     min-width: 0;
 }
 
-/* end null style  */
-body {
-    font-size: 16px;
-}
+/* end null style ========================================================= */
+
 
 .wrapper {
     /* border-image: url(/image/bg/gory_ozero_vershiny_129263_2560x1600.jpg);
@@ -103,14 +110,31 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover; */
-    min-height: 100%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    padding: 0 0.63rem;
+
+
 }
 
-.container {}
+main {
+    flex: 1 1 auto;
+}
+
+.container {
+    max-width: 67.5em;
+    box-sizing: content-box;
+    margin: 0 auto;
+    padding: 0 0.35em;
+}
+
+.page {
+    min-height: 10em;
+}
+
+.page__title {}
+
+.weather {}
 
 img.background {
     position: fixed;
@@ -130,10 +154,10 @@ img.background {
     align-items: flex-start;
     border: 2px solid;
     border-radius: 0.5rem;
-    max-width: 100vw;
     font-family: 'Trebuchet MS', sans-serif;
     font-size: 1.1rem;
     padding: 0.6rem;
+    width: 100%;
 }
 
 .weather-block__title {
@@ -142,25 +166,15 @@ img.background {
     color: rgb(66, 137, 176);
 }
 
-.weather-block__main {
-    min-width: 43.7rem;
-    max-width: 100vw;
+.main-weather {
+    width: 100%;
     text-align: left;
 }
 
-.main-weather {}
-
-.main-weather__units-selection {}
-
-.main-weather__units-selection-option span {}
-
-
-
-.main-weather__out {}
-
 .out {
     display: flex;
-
+    align-items: flex-start;
+    justify-content: space-between;
     width: 100%;
 }
 
@@ -178,6 +192,19 @@ img.background {
     box-shadow: 0 0 10px 100px #1882A8 inset;
 
 }
+
+.out__weatcher {
+    flex: 1 0 20%;
+}
+
+.out__weatcher:not(:last-child) {
+    margin-right: 1.25rem;
+}
+
+.out__map {
+    flex: 1 1 auto;
+}
+
 
 .main-weather__city-selection {}
 

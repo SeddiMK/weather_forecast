@@ -14,95 +14,100 @@
     <div class="wrapper">
         <!-- <img src="/image/bg/luiz_ozero_gory_118841_2560x1600.jpg" class="background" alt="Nature picture mountains and water" /> -->
         <div class="container">
-            <a href="/" class="container__title">Weather</a>
-            <section class="weather">
+            <main>
+                <section class="page">
+                    <a href="/" class="page__title">Weather</a>
+                </section>
 
-                <p class="weather__location-sapport" id="location-sapport">Geolocation is supported by this browser.</p>
+                <section class="weather">
 
-                <div class="weather-block">
-                    <h2 class="weather-block__title">Weather in city</h2>
-                    <div class="weather-block__main main-weather">
+                    <p class="weather__location-sapport" id="location-sapport">Geolocation is supported by this browser.
+                    </p>
 
-                        <select class="main-weather__units-selection" name="metric" id="metric">
-                            <option value="metric">Metric system in C&deg;
-                            </option>
-                            <option value="imperial">Imperial system in F
-                            </option>
+                    <div class="weather-block">
+                        <h2 class="weather-block__title">Weather in city</h2>
+                        <div class="weather-block__main main-weather">
 
-                        </select>
+                            <select class="main-weather__units-selection" name="metric" id="metric">
+                                <option value="metric">Metric system in C&deg;
+                                </option>
+                                <option value="imperial">Imperial system in F
+                                </option>
 
-                        <div class="main-weather__out out">
-                            <div class="out__weatcher">
-                                <!-- <div class="out__select-wrapper"></div> -->
-                                <div class="out__icon-temp-block">
-                                    <h3 class="out__temp"></h3>
-                                    <div class="out__icon"></div>
+                            </select>
 
+                            <div class="main-weather__out out">
+                                <div class="out__weatcher">
+                                    <!-- <div class="out__select-wrapper"></div> -->
+                                    <div class="out__icon-temp-block">
+                                        <h3 class="out__temp"></h3>
+                                        <div class="out__icon"></div>
+
+                                    </div>
+
+                                    <h3 class="out__name-city"></h3>
+                                    <p class="out__data">2023-09-30</p>
+
+                                    <p class="out__description"></p>
+                                    <p class="out__wind-deg"></p>
+                                    <p class="out__wind-speed"></p>
+                                    <p class="out__pressure"></p>
                                 </div>
-
-                                <h3 class="out__name-city"></h3>
-                                <p class="out__data">2023-09-30</p>
-
-                                <p class="out__description"></p>
-                                <p class="out__wind-deg"></p>
-                                <p class="out__wind-speed"></p>
-                                <p class="out__pressure"></p>
+                                <div class="out__map">
+                                    <div id="mapholder" class="out__map-holder">This is where you are.</div>
+                                </div>
                             </div>
-                            <div class="out__map">
-                                <div id="mapholder" class="out__map-holder">This is where you are.</div>
+
+                            <div class="main-weather__forecast-spoiler">
+                                <div class="out__open-spoiler">Click to show 5 day forecast</div>
+                                <div class="main-weather__spoiler">
+                                    <div class="spoiler__item">
+                                        <h4>Date</h4>
+                                        <div class="spoiler__block-tmp">
+                                            <h4>Temp</h4>
+                                            <div class="spoiler__icon">Icon</div>
+                                        </div>
+
+                                    </div>
+                                    <div class="spoiler__item">
+                                        <h4>Date</h4>
+                                        <div class="spoiler__block-tmp">
+                                            <h4>Temp</h4>
+                                            <div class="spoiler__icon">Icon</div>
+                                        </div>
+
+                                    </div>
+                                    <div class="spoiler__item">
+                                        <h4>Date</h4>
+                                        <div class="spoiler__block-tmp">
+                                            <h4>Temp</h4>
+                                            <div class="spoiler__icon">Icon</div>
+                                        </div>
+
+                                    </div>
+                                    <div class="spoiler__item">
+                                        <h4>Date</h4>
+                                        <div class="spoiler__block-tmp">
+                                            <h4>Temp</h4>
+                                            <div class="spoiler__icon">Icon</div>
+                                        </div>
+
+                                    </div>
+                                    <div class="spoiler__item">
+                                        <h4>Date</h4>
+                                        <div class="spoiler__block-tmp">
+                                            <h4>Temp</h4>
+                                            <div class="spoiler__icon">Icon</div>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
+
+
                         </div>
 
-                        <div class="main-weather__forecast-spoiler">
-                            <div class="out__open-spoiler">Click to show 5 day forecast</div>
-                            <div class="main-weather__spoiler">
-                                <div class="spoiler__item">
-                                    <h4>Date</h4>
-                                    <div class="spoiler__block-tmp">
-                                        <h4>Temp</h4>
-                                        <div class="spoiler__icon">Icon</div>
-                                    </div>
-
-                                </div>
-                                <div class="spoiler__item">
-                                    <h4>Date</h4>
-                                    <div class="spoiler__block-tmp">
-                                        <h4>Temp</h4>
-                                        <div class="spoiler__icon">Icon</div>
-                                    </div>
-
-                                </div>
-                                <div class="spoiler__item">
-                                    <h4>Date</h4>
-                                    <div class="spoiler__block-tmp">
-                                        <h4>Temp</h4>
-                                        <div class="spoiler__icon">Icon</div>
-                                    </div>
-
-                                </div>
-                                <div class="spoiler__item">
-                                    <h4>Date</h4>
-                                    <div class="spoiler__block-tmp">
-                                        <h4>Temp</h4>
-                                        <div class="spoiler__icon">Icon</div>
-                                    </div>
-
-                                </div>
-                                <div class="spoiler__item">
-                                    <h4>Date</h4>
-                                    <div class="spoiler__block-tmp">
-                                        <h4>Temp</h4>
-                                        <div class="spoiler__icon">Icon</div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                    <!-- <div data-spollers class="spollers">
+                        <!-- <div data-spollers class="spollers">
                         <div class="spollers__item">
                             <button type="button" data-spoller class="spollers__title">Заголовок
                                 спойлера</button>
@@ -113,15 +118,15 @@
                             </div>
                         </div>
                     </div> -->
-                </div>
+                    </div>
 
-                <div class="weather__widget widget">
-                    <p class="widget__title">Click here open Widget</p>
-                    <div class="widget__main" id="openweathermap-widget-1"></div>
-                </div>
+                    <div class="weather__widget widget">
+                        <p class="widget__title">Click here open Widget</p>
+                        <div class="widget__main" id="openweathermap-widget-1"></div>
+                    </div>
 
-            </section>
-
+                </section>
+            </main>
 
             <footer>
                 <div class="footer__about about-me">
@@ -140,6 +145,7 @@
                 </div>
             </footer>
         </div>
+    </div>
     </div>
     <script src="slide-toggle.js"></script>
     <!-- <script src="ItcCollapse.js"></script> -->
