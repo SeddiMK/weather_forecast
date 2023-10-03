@@ -167,7 +167,7 @@ function showWeather(dataW, dataGeoPos) {
   // widjet watcher ==========================================================
   window.myWidgetParam ? window.myWidgetParam : (window.myWidgetParam = []);
   window.myWidgetParam.push({
-    id: 1,
+    id: 2,
     cityid: dataWeather.id,
     appid: APIKEY,
     units: metricSys,

@@ -1,11 +1,13 @@
 /* start null style  */
 :root {
     box-sizing: border-box;
-    font-size: calc(1vw + 0.2em);
+    /* 16px for 1440*/
+    font-size: calc(1vw + 0.10em);
 
     --min-width: 1080px;
-    --base-color: #370;
-    --base-font: 'Trebuchet MS', sans-serif;
+    --base-color: rgb(51, 90, 233);
+    --title-color: rgb(12, 181, 223);
+    --base-font: Georgia, 'Times New Roman', Times, sans-serif;
 }
 
 * {
@@ -102,39 +104,124 @@ h6 {
 
 
 .wrapper {
-    /* border-image: url(/image/bg/gory_ozero_vershiny_129263_2560x1600.jpg);
+    border-image: url(/image/bg/gory_ozero_vershiny_129263_2560x1600.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover; */
-    display: flex;
+    background-size: cover;
+    /* display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: hidden; */
 
 
 }
 
 main {
-    flex: 1 1 auto;
+    /* flex: 1 1 auto; */
 }
 
 .container {
     max-width: 67.5em;
     box-sizing: content-box;
     margin: 0 auto;
-    padding: 0 0.35em;
+    padding: 0 .65em;
+    height: 100vh;
 }
 
+/************************************************************
+********************* page ********************************** 
+*************************************************************/
 .page {
-    min-height: 10em;
+    display: flex;
+    justify-content: space-between;
+    height: 40vh;
+    margin-top: 1em;
 }
 
-.page__title {}
+.page__title {
+    color: var(--title-color);
+    font-size: 1.2rem;
 
-.weather {}
+}
+
+/* widget =============================================== */
+.weather__widget {}
+
+.widget {}
+
+.widget__title {
+    position: relative;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0em 2.7em 0.7em 30px;
+}
+
+
+
+.open-spoiler--hover {
+    color: var(--title-color);
+    transition: color 0.3s ease 0s;
+}
+
+.open-spoiler--hover:hover {
+    color: black;
+
+}
+
+.widget__title::before,
+.widget__title::after {
+    content: '';
+    width: 10px;
+    height: 1px;
+    background-color: #000;
+    position: absolute;
+    top: 10px;
+    transition: transform 0.3s ease 0s;
+}
+
+.widget__title::before {
+    transform: rotate(40deg);
+    left: 0;
+}
+
+.widget__title::after {
+    transform: rotate(-40deg);
+    left: 8px;
+}
+
+
+.widget__title.widget-open::before,
+.widget__title.widget-open::after {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.widget__title.widget-open::before {
+    transform: rotate(-40deg);
+}
+
+.widget__title.widget-open::after {
+    transform: rotate(40deg);
+}
+
+.widget__main {
+    border-radius: 0.4rem;
+    display: none;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    transition: height 0.3s ease-out;
+}
+
+/************************************************************
+********************* weather ******************************* 
+*************************************************************/
+.weather {
+    height: 40vh;
+}
 
 img.background {
     position: fixed;
@@ -157,7 +244,6 @@ img.background {
     font-family: 'Trebuchet MS', sans-serif;
     font-size: 1.1rem;
     padding: 0.6rem;
-    width: 100%;
 }
 
 .weather-block__title {
@@ -167,7 +253,7 @@ img.background {
 }
 
 .main-weather {
-    width: 100%;
+    /* width: 100vw; */
     text-align: left;
 }
 
@@ -175,7 +261,6 @@ img.background {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    width: 100%;
 }
 
 /* .out__select-wrapper {
@@ -202,7 +287,7 @@ img.background {
 }
 
 .out__map {
-    flex: 1 1 auto;
+    flex: 2 1 auto;
 }
 
 
@@ -260,6 +345,7 @@ select {
     cursor: pointer;
     padding-left: 30px;
 }
+
 
 .out__open-spoiler::before,
 .out__open-spoiler::after {
@@ -327,66 +413,37 @@ select {
 
 .spoiler__icon {}
 
-/* widget =============================================== */
-.weather__widget {}
-
-.widget {}
-
-.widget__title {
-    position: relative;
-    cursor: pointer;
-    padding: 0.7rem 0px 0.7rem 30px;
-}
-
-.widget__title::before,
-.widget__title::after {
-    content: '';
-    width: 10px;
-    height: 1px;
-    background-color: #000;
-    position: absolute;
-    top: 19px;
-    transition: transform 0.3s ease 0s;
-}
-
-.widget__title::before {
-    transform: rotate(40deg);
-    left: 0;
-}
-
-.widget__title::after {
-    transform: rotate(-40deg);
-    left: 8px;
-}
 
 
-.widget__title.widget-open::before,
-.widget__title.widget-open::after {
-    background-color: rgba(175, 74, 195, 0.5);
-}
-
-.widget__title.widget-open::before {
-    transform: rotate(-40deg);
-}
-
-.widget__title.widget-open::after {
-    transform: rotate(40deg);
-}
-
-.widget__main {
-    border-radius: 0.4rem;
-    display: none;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    height: auto;
-    transition: height 0.3s ease-out;
-}
-
-/* footer =========================================================== */
+/************************************************************
+********************* footer ******************************** 
+*************************************************************/
 .footer__about {}
 
 .about-me {}
+
+.about-me {}
+
+.fa {
+    width: 50px;
+    text-align: right;
+    padding-right: .3em;
+}
+
+.about-me--hover>a {
+    line-height: 2;
+}
+
+
+
+
+.about-me--hover {
+    transition: color 0.3s ease;
+}
+
+.about-me--hover:hover {
+    color: var(--base-color);
+}
 
 .about-me__gmail {}
 
