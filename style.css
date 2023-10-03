@@ -102,9 +102,8 @@ h6 {
 
 /* end null style ========================================================= */
 
-
-.wrapper {
-    border-image: url(/image/bg/gory_ozero_vershiny_129263_2560x1600.jpg);
+body {
+    /* background-image: url(/image/bg/gory_ozero_vershiny_129263_2560x1600.jpg); */
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
@@ -112,6 +111,10 @@ h6 {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+
+.wrapper {
+
     /* display: flex;
     flex-direction: column;
     overflow: hidden; */
@@ -243,13 +246,14 @@ img.background {
     border-radius: 0.5rem;
     font-family: 'Trebuchet MS', sans-serif;
     font-size: 1.1rem;
-    padding: 0.6rem;
+    padding: 0.9rem;
 }
 
 .weather-block__title {
     font-size: 1.5rem;
     font-family: 'Trebuchet MS', sans-serif;
     color: rgb(66, 137, 176);
+    margin-bottom: 1em;
 }
 
 .main-weather {
@@ -261,6 +265,7 @@ img.background {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+    margin-bottom: 2em;
 }
 
 /* .out__select-wrapper {
@@ -282,8 +287,13 @@ img.background {
     flex: 1 0 20%;
 }
 
+
 .out__weatcher:not(:last-child) {
-    margin-right: 1.25rem;
+    margin-right: 3em;
+}
+
+.out__weatcher>p {
+    margin-bottom: 1em;
 }
 
 .out__map {
@@ -310,9 +320,11 @@ select {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 10rem;
+    max-width: 10em;
     margin: 0 auto;
 }
+
+
 
 .out__icon {}
 
@@ -324,6 +336,7 @@ select {
 .out__name-city {
     font-size: 1.2rem;
     color: rgb(96, 96, 247);
+    margin-bottom: 0.5em;
 }
 
 .out__data {
@@ -343,18 +356,19 @@ select {
 .out__open-spoiler {
     position: relative;
     cursor: pointer;
-    padding-left: 30px;
+    padding-left: 1.7em;
+    margin-bottom: 1em;
 }
 
 
 .out__open-spoiler::before,
 .out__open-spoiler::after {
     content: '';
-    width: 10px;
+    width: 0.7em;
     height: 1px;
     background-color: #000;
     position: absolute;
-    top: 9px;
+    top: .5em;
     transition: transform 0.3s ease 0s;
 }
 
@@ -365,7 +379,7 @@ select {
 
 .out__open-spoiler::after {
     transform: rotate(-40deg);
-    left: 8px;
+    left: 0.59em;
 }
 
 
