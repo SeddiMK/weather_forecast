@@ -14,11 +14,9 @@
 html,
 body {
     height: 100%;
-    /* min-width: var(--min-width); */
 }
 
 body {
-    /* color: $mainColor; */
     line-height: 1;
     font-family: var(--base-font);
     /* background-image: url(/image/bg/gory_ozero_vershiny_129263_2560x1600.jpg); */
@@ -31,28 +29,28 @@ body {
     background-size: cover; */
 }
 
-.wrapper {
 
-    /* display: flex;
-    flex-direction: column;
-    overflow: hidden; */
-
-
-}
-
-.background {}
-
-.ba main {
-    /* flex: 1 1 auto; */
+img.background {
+    position: fixed;
+    z-index: -1;
+    min-height: 100%;
+    min-width: 640px;
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
 }
 
 .container {
-    /* max-width: 67.5em; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     box-sizing: content-box;
-    margin: 0 auto;
     padding: 0 .65em;
-    /* height: 100vh; */
 }
+
+
 
 /************************************************************
 ********************* page ********************************** 
@@ -60,7 +58,6 @@ body {
 .page {
     display: flex;
     justify-content: space-between;
-    /* height: 40vh; */
     margin-top: 1em;
 }
 
@@ -71,10 +68,6 @@ body {
 }
 
 /* widget =============================================== */
-.weather__widget {}
-
-.widget {}
-
 .widget__title {
     position: relative;
     font-size: 1rem;
@@ -143,25 +136,11 @@ body {
 ********************* weather ******************************* 
 *************************************************************/
 .weather {
-    /* height: 40vh; */
-}
-
-img.background {
-    position: fixed;
-    z-index: -1;
-    min-height: 100%;
-    min-width: 640px;
-    width: 100%;
-    height: auto;
-
-    top: 0;
-    left: 0;
+    background-color: rgb(255, 255, 255, 0.3);
+    border-radius: 0.4rem;
 }
 
 .weather-block {
-    /* display: flex;
-    flex-direction: column;
-    align-items: flex-start; */
     border: 2px solid;
     border-radius: 0.5rem;
     font-family: 'Trebuchet MS', sans-serif;
@@ -176,40 +155,22 @@ img.background {
 }
 
 .main-weather {
-    /* width: 100vw; */
     text-align: left;
 }
 
 .out {
-    /* display: flex;
-    align-items: flex-start;
-    justify-content: space-between; */
     margin-bottom: 2em;
 }
 
-/* .out__select-wrapper {
-    border-radius: 0.5rem;
-    display: inline-block;
-    overflow: hidden;
-    background: #cccccc;
-    border: 0.1rem solid;
-    box-shadow: 0 0 0.2rem rgb(14, 74, 106);
-    transition: box-shadow 0.5s ease-out;
-} */
 
 .out__select-wrapper:hover {
     box-shadow: 0 0 10px 100px #1882A8 inset;
-
 }
 
-
-
 .out__weatcher {
-    /* flex: 1 0 20%; */
     color: #000;
 
 }
-
 
 .out__weatcher:not(:last-child) {
     margin-right: 3em;
@@ -219,25 +180,16 @@ img.background {
     margin-bottom: 1em;
 }
 
-.out__map {
-    /* flex: 2 1 auto; */
-}
-
-
-.main-weather__city-selection {}
-
-/* select {
-    height: 40px;
+select {
+    height: auto;
     border: 0px;
+    border-radius: .43em;
     outline: none;
     padding: .4rem 0rem .5rem 0rem;
     margin: 0 auto;
     font-size: 1.1rem;
     color: rgb(14, 74, 106);
-} */
-
-
-
+}
 
 .out__icon-temp-block {
     display: flex;
@@ -246,29 +198,19 @@ img.background {
 }
 
 
-
-.out__icon {}
-
 .out__temp {
+    font-weight: 700;
     font-size: 2.5rem;
 }
 
 .out__name-city {
-
     margin-bottom: 0.5em;
 }
 
-.out__data {}
-
-.out__description {}
-
-.out__wind-deg {}
-
-.out__wind-speed {}
-
-.out__pressure {}
-
-
+.out__data {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
 
 .out__open-spoiler {
     position: relative;
@@ -276,7 +218,6 @@ img.background {
     padding-left: 1.7em;
     margin-bottom: 1em;
 }
-
 
 .out__open-spoiler::before,
 .out__open-spoiler::after {
@@ -299,7 +240,6 @@ img.background {
     left: 0.59em;
 }
 
-
 .out__open-spoiler.spoiler-open::before,
 .out__open-spoiler.spoiler-open::after {
     background-color: rgba(175, 74, 195, 0.5);
@@ -313,7 +253,6 @@ img.background {
     transform: rotate(40deg);
 }
 
-
 .main-weather__spoiler {
     border-radius: 0.4rem;
     display: none;
@@ -324,12 +263,13 @@ img.background {
     transition: height 0.3s ease-out;
 }
 
-
 .spoiler__item {
-    border: 3px solid rgba(175, 74, 195, 0.5);
+    border: 3px solid rgba(0, 0, 0, 0.5);
     border-radius: 0.4em;
     text-align: left;
     color: #000;
+    font-size: 1.7rem;
+    font-weight: 700;
     padding: 0.5em;
 }
 
@@ -343,16 +283,9 @@ img.background {
 
 }
 
-.spoiler__icon {}
-
-
-
 /************************************************************
 ********************* footer ******************************** 
 *************************************************************/
-.footer__about {}
-
-
 .about-me {
     color: #000;
 }
@@ -360,15 +293,12 @@ img.background {
 .fa {
     width: 50px;
     text-align: right;
-    padding-right: .3em;
+    margin-right: .3em;
 }
 
 .about-me--hover>a {
     line-height: 2;
 }
-
-
-
 
 .about-me--hover {
     transition: color 0.3s ease;
@@ -378,21 +308,13 @@ img.background {
     color: var(--base-color);
 }
 
-.about-me__gmail {}
-
-.about-me__git {}
-
-.about-me__linkedin {}
-
-.about-me__facebook {}
-
-
 /************************************************************
 ********************* @media ******************************** 
 *************************************************************/
 @media (max-width:479.98px) {
     .page {
         height: 22em;
+        width: 22em;
     }
 
     .page__title {
@@ -412,14 +334,12 @@ img.background {
 
     .widget-open.widget__title::before {
         top: 0.8em;
-        left: 4.2em;
-
+        left: 2.5em;
     }
 
     .widget-open.widget__title::after {
         top: 0.8em;
-        left: 4.8em;
-        padding-left: 0;
+        left: 3.1em;
     }
 
     .widget__title>h4 {
@@ -445,17 +365,20 @@ img.background {
         gap: 1.5em;
         flex-wrap: wrap;
     }
-
-
 }
 
 @media (min-width:479.98px) {
+
     .page {
         height: 27em;
     }
 
     .page__title {
         font-size: 3rem;
+    }
+
+    .weather {
+        /* width: 100%; */
     }
 
     .weather__widget {
@@ -573,7 +496,6 @@ img.background {
     .out {
         display: flex;
         flex-wrap: wrap;
-        /* justify-content: center; */
         gap: 1.5em;
 
     }
@@ -650,7 +572,6 @@ img.background {
     .out {
         display: flex;
         flex-wrap: wrap;
-        /* justify-content: center; */
         gap: 1.5em;
     }
 
@@ -662,8 +583,6 @@ img.background {
     .out__map-holder {
         margin-bottom: 2em;
     }
-
-    .out__weatcher {}
 
     .out__weatcher:not(:last-child) {
         margin-right: 0em;
@@ -677,6 +596,24 @@ img.background {
     }
 }
 
-}
 
-@media (min-width:var(--min-width)) {}
+
+@media (min-width:1200px) {
+    .page {
+        height: 15em;
+    }
+
+    .widget__title::after {
+        top: 0.9em;
+        left: 0.6em;
+        padding-left: 0;
+    }
+
+
+    .widget-open.widget__title::after {
+        top: 0.9em;
+        left: 0.6em;
+        padding-left: 0;
+    }
+
+}

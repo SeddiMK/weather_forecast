@@ -45,7 +45,7 @@ metricSel.addEventListener('change', (metricSysVal) => {
 async function showPosWeatForecast(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let scrnWidth = screen.width - 43;
+  let scrnWidth = screen.width - 64;
   const paramGeoCodingPosition = `reverse-geocode?latitude=${lat}&longitude=${lon}&localityLanguage=en&key=${APIKEYGeoCod}`;
 
   const paramFetchWeatcher = `weather?lat=${lat}&lon=${lon}&units=${metricSys}&appid=${APIKEY}`;
