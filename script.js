@@ -45,6 +45,7 @@ metricSel.addEventListener('change', (metricSysVal) => {
 async function showPosWeatForecast(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
+  let scrnWidth = screen.width - 43;
   const paramGeoCodingPosition = `reverse-geocode?latitude=${lat}&longitude=${lon}&localityLanguage=en&key=${APIKEYGeoCod}`;
 
   const paramFetchWeatcher = `weather?lat=${lat}&lon=${lon}&units=${metricSys}&appid=${APIKEY}`;
@@ -71,8 +72,11 @@ async function showPosWeatForecast(position) {
 
   showWeather(dataW, dataGeoPos);
   showForecast(dataForecast);
+
+  if (scrnWidth >= 300) scrnWidth = 300;
+
   cityName = dataGeoPos.city;
-  const paramMap = `map?key=${APIKEYMap}&center=${lat},${lon}&locations=${lat},${lon}&zoom=14&size=400,300&defaultMarker=marker-md-8950e8-f3b817-Y&banner=${cityName}&size=@2x`;
+  const paramMap = `map?key=${APIKEYMap}&center=${lat},${lon}&locations=${lat},${lon}&zoom=14&size=${scrnWidth},300&defaultMarker=marker-md-8950e8-f3b817-Y&banner=${cityName}&size=@2x`;
   imgUrlMap = URLMap + paramMap;
 
   document.getElementById('mapholder').innerHTML =
