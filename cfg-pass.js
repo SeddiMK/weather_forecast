@@ -16,6 +16,6 @@ const URLGeoCod = 'https://api-bdc.net/data/';
 const APIKEYGeoCod = process.env.API_KEYGeoCod;
 
 const URLMap = 'https://www.mapquestapi.com/staticmap/v5/';
-// const APIKEYMap = 'BFGCW1QUqYWdZ5MdzIyaDQkr0ti1jvZG';
-const APIKEYMap = process.env.API_KEYMap;
+const APIKEYMap = 'BFGCW1QUqYWdZ5MdzIyaDQkr0ti1jvZG';
+// const APIKEYMap = process.env.API_KEYMap;
 console.log(APIKEY + '-------------------------');
