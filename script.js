@@ -6,6 +6,9 @@
 //   5188029: 'East Pittsburgh',
 // };
 
+const URLMap = 'https://www.mapquestapi.com/staticmap/v5/';
+const APIKEYMap = 'BFGCW1QUqYWdZ5MdzIyaDQkr0ti1jvZG';
+
 // const { APIKEY } = require('git-variables');
 
 // const selectWrapper = document.querySelector('.out__select-wrapper');
