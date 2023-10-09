@@ -6,7 +6,7 @@
 //   5188029: 'East Pittsburgh',
 // };
 
-const { APIKEY } = require('git-variables');
+// const { APIKEY } = require('git-variables');
 
 // const selectWrapper = document.querySelector('.out__select-wrapper');
 const out = document.querySelector('.out');
