@@ -1,7 +1,5 @@
 :root {
     box-sizing: border-box;
-    /* 16px for 1440*/
-    /* font-size: calc(1vw + 0.10em); */
     font-size: calc(1vw + 0.6em);
 
     --min-width: 1080px;
@@ -59,6 +57,7 @@ img.background {
     display: flex;
     justify-content: space-between;
     margin-top: 1em;
+    width: 100%;
 }
 
 .page__title {
@@ -136,7 +135,8 @@ img.background {
 ********************* weather ******************************* 
 *************************************************************/
 .weather {
-    background-color: rgb(255, 255, 255, 0.3);
+    width: 100%;
+    background-color: rgb(255, 255, 255, 0.4);
     border-radius: 0.4rem;
 }
 
@@ -368,6 +368,9 @@ select {
 }
 
 @media (min-width:479.98px) {
+    :root {
+        font-size: calc(1vw + 0.2em);
+    }
 
     .page {
         height: 27em;
@@ -375,10 +378,6 @@ select {
 
     .page__title {
         font-size: 3rem;
-    }
-
-    .weather {
-        /* width: 100%; */
     }
 
     .weather__widget {
@@ -442,6 +441,10 @@ select {
 }
 
 @media (min-width:767.98px) {
+    :root {
+        font-size: calc(1vw + 0.3em);
+    }
+
     .page {
         height: 27em;
     }

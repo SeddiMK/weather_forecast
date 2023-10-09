@@ -5,7 +5,8 @@
 //   5435464: 'Pueblo',
 //   5188029: 'East Pittsburgh',
 // };
-const selectWrapper = document.querySelector('.out__select-wrapper');
+
+// const selectWrapper = document.querySelector('.out__select-wrapper');
 const out = document.querySelector('.out');
 const metricSel = document.querySelector('#metric');
 
