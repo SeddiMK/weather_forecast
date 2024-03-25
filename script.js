@@ -1,11 +1,8 @@
-const URL = 'http://api.openweathermap.org/data/2.5/';
-const APIKEY = '3c2ab57f9f8c15dd6a412a2691437821';
+import { URL_CONF, API_KEY_CONF } from './config.js';
 
-const URLMap = 'https://www.mapquestapi.com/staticmap/v5/';
-const APIKEYMap = 'BFGCW1QUqYWdZ5MdzIyaDQkr0ti1jvZG';
-
-const URLGeoCod = 'https://api-bdc.net/data/';
-const APIKEYGeoCod = 'bdc_459d13c40cb94532841b7bd393af14e1';
+const { URL, URLMap, URLGeoCod } = URL_CONF;
+const { APIKEY, APIKEYGeoCod, APIKEYMap } = API_KEY_CONF;
+//
 // cansel config.js ====================================================
 const out = document.querySelector('.out');
 const metricSel = document.querySelector('#metric');
@@ -75,12 +72,17 @@ async function showPosWeatForecast(position) {
 
   if (scrnWidth >= 300) scrnWidth = 300;
 
-  cityName = dataGeoPos.city;
-  const paramMap = `map?key=${APIKEYMap}&center=${lat},${lon}&locations=${lat},${lon}&zoom=14&size=${scrnWidth},300&defaultMarker=marker-md-8950e8-f3b817-Y&banner=${cityName}&size=@2x`;
-  imgUrlMap = URLMap + paramMap;
+  console.log(dataGeoPos, 'data geo pos');
 
-  document.getElementById('mapholder').innerHTML =
-    "<img src='" + imgUrlMap + "'>";
+  let cityName = dataGeoPos.city;
+
+  const paramMap = `map?key=${APIKEYMap}&center=${lat},${lon}&locations=${lat},${lon}&zoom=14&size=${scrnWidth},300&defaultMarker=marker-md-8950e8-f3b817-Y&banner=${cityName}&size=@2x`;
+  let imgUrlMap = URLMap + paramMap;
+
+  console.log(imgUrlMap);
+  document.getElementById(
+    'mapholder'
+  ).innerHTML = `<img src="${imgUrlMap}"  alt="Map you locations">`;
 }
 
 function showWeather(dataW, dataGeoPos) {
@@ -99,9 +101,7 @@ function showWeather(dataW, dataGeoPos) {
   };
 
   // console.log(data.dt);
-
   // console.log(dateUnixToDate);
-
   // console.log(dataWeather.name);
 
   divImg.innerHTML = `<img class='out-icon' src='https://openweathermap.org/img/wn/${dataWeather.icon}@2x.png' alt='Image Watcher'>`;
@@ -161,8 +161,6 @@ function showForecast(data) {
   // let dt = data.list[timeDay].dt_txt.split(' ');
   // console.log(dt); // ['2023-09-22', '12:00:00']
   // console.log(dt[1].slice(0, -3)); // 12:00
-
-  console.log('spoler work');
 
   let spoilerItemDate;
   let spoilerItemTemp;
