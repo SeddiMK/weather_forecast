@@ -50,10 +50,15 @@ async function showPosWeatForecast(position) {
 
   let dataW;
   let dataForecast;
+  let geoCodingPosition;
+  let dataGeoPos;
 
   try {
     const resWeatcher = await fetch(URL + paramFetchWeatcher);
     dataW = await resWeatcher.json();
+
+    geoCodingPosition = await fetch(URLGeoCod + paramGeoCodingPosition);
+    dataGeoPos = await geoCodingPosition.json();
   } catch (error) {
     console.error(error);
   }
@@ -64,9 +69,6 @@ async function showPosWeatForecast(position) {
     console.error(error);
   }
 
-  let geoCodingPosition = await fetch(URLGeoCod + paramGeoCodingPosition);
-  let dataGeoPos = await geoCodingPosition.json();
-
   showWeather(dataW, dataGeoPos);
   showForecast(dataForecast);
 
@@ -75,15 +77,126 @@ async function showPosWeatForecast(position) {
   console.log(dataGeoPos, 'data geo pos');
 
   let cityName = dataGeoPos.city;
+  // ----------------------------------------------------
 
-  const paramMap = `map?key=${APIKEYMap}&center=${lat},${lon}&locations=${lat},${lon}&zoom=14&size=${scrnWidth},300&defaultMarker=marker-md-8950e8-f3b817-Y&banner=${cityName}&size=@2x`;
+  // map ---------------------------------------------------------------
+  const paramMap = `?apikey=${APIKEYMap}&lang=ru_RU`;
   let imgUrlMap = URLMap + paramMap;
 
-  console.log(imgUrlMap);
-  document.getElementById(
-    'mapholder'
-  ).innerHTML = `<img src="${imgUrlMap}"  alt="Map you locations">`;
+  console.log(imgUrlMap, '-------------------------------imgUrlMap');
+  // ('https://api-maps.yandex.ru/2.1/?apikey=c960fefe-a1b4-422a-ab2d-a582498632b6&lang=ru_RU');
+  // document.getElementsByTagName(
+  //   'head'
+  // ).innerHTML = `<script id="scrMap" src=${imgUrlMap}
+  // type="text/javascript">
+  // </script>">`;
+
+  // Функция ymaps.ready() будет вызвана, когда
+  // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+  ymaps.ready(init);
+
+  function init() {
+    // Создание карты.
+    var myMap = new ymaps.Map(
+        'mapholder',
+        {
+          // Координаты центра карты.
+          // Порядок по умолчанию: «широта, долгота».
+          // Чтобы не определять координаты центра карты вручную,
+          // воспользуйтесь инструментом Определение координат.
+          center: [lat, lon],
+          // Уровень масштабирования. Допустимые значения:
+          // от 0 (весь мир) до 19.
+          zoom: 16,
+        },
+        {
+          searchControlProvider: 'yandex#search',
+        }
+      ),
+      myPlacemark = new ymaps.Placemark([lat, lon], {
+        // Чтобы балун и хинт открывались на метке, необходимо задать ей определенные свойства.
+        balloonContentHeader: 'Балун метки',
+        balloonContentBody: 'Содержимое <em>балуна</em> метки',
+        balloonContentFooter: 'Подвал',
+        hintContent: 'Хинт метки',
+      });
+
+    myMap.geoObjects.add(myPlacemark);
+
+    // Открываем балун на карте (без привязки к геообъекту).
+    // myMap.balloon.open([lat, lon], 'You hier', {
+    //   // Опция: не показываем кнопку закрытия.
+    //   closeButton: false,
+    // });
+
+    // Показываем хинт на карте (без привязки к геообъекту).
+    myMap.hint.open(myMap.getCenter(), 'Are you here', {
+      // Опция: задержка перед открытием.
+      openTimeout: 1500,
+    });
+
+    // if (myMap) {
+    //   let location = ymaps.geolocation;
+
+    //   // Получение местоположения и автоматическое отображение его на карте.
+    //   location
+    //     .get({
+    //       mapStateAutoApply: true,
+    //     })
+    //     .then(
+    //       function (result) {
+    //         // Получение местоположения пользователя.
+    //         let userAddress = result.geoObjects.get(0).properties.get('text');
+    //         let userCoodinates = result.geoObjects
+    //           .get(0)
+    //           .geometry.getCoordinates();
+
+    //         // Пропишем полученный адрес в балуне.
+    //         result.geoObjects.get(0).properties.set({
+    //           balloonContentBody:
+    //             'Адрес: ' + userAddress + '<br/>Координаты:' + userCoodinates,
+    //         });
+    //         myMap.geoObjects.add(result.geoObjects);
+    //         // // Открываем балун на карте (без привязки к геообъекту).
+    //         // myMap.balloon.open(
+    //         //   [lat, lon],
+    //         //   'Адрес: ' + userAddress + '<br/>Координаты:' + userCoodinates,
+    //         //   {
+    //         //     // Опция: не показываем кнопку закрытия.
+    //         //     closeButton: true,
+    //         //   }
+    //         // );
+    //       },
+
+    //       function (err) {
+    //         console.log('Ошибка: ' + err);
+    //       }
+    //     );
+
+    //   // // Создание геообъекта с типом точка (метка).
+    //   // let location = ymaps.geolocation.get();
+    //   // // Асинхронная обработка ответа.
+    //   // location.then(
+    //   //   function (result) {
+    //   //     // Добавление местоположения на карту.
+    //   //     myMap.geoObjects.add(result.geoObjects);
+    //   //   },
+    //   //   function (err) {
+    //   //     console.log('Ошибка: ' + err);
+    //   //   }
+    //   // );
+    // }
+  }
 }
+
+//   const paramMap = `map?key=${APIKEYMap}&center=${lat},${lon}&locations=${lat},${lon}&zoom=14&size=${scrnWidth},300&defaultMarker=marker-md-8950e8-f3b817-Y&banner=${cityName}&size=@2x`;
+//   let imgUrlMap = URLMap + paramMap;
+
+//   console.log(imgUrlMap);
+//   document.getElementById(
+//     'mapholder'
+//   ).innerHTML = `<img src="${imgUrlMap}"  alt="Map you locations">`;
+// }
 
 function showWeather(dataW, dataGeoPos) {
   let dateUnixToDate = convertUnixToDate(dataW.timezone, dataW.dt);

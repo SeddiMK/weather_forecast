@@ -86,48 +86,42 @@ img.background {
 
 }
 
-.widget__title::before,
-.widget__title::after {
-    content: '';
-    width: 10px;
-    height: 1px;
-    background-color: #000;
-    position: absolute;
-    top: 10px;
-    transition: transform 0.3s ease 0s;
+..widget__title {
+    color: #000;
 }
 
 .widget__title::before {
-    transform: rotate(40deg);
+
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    border-color: transparent transparent rgb(57, 57, 57) transparent;
+    border-style: solid;
+    border-width: 0px 5px 8px 5px;
+    height: 0px;
+    width: 0px;
+}
+
+.widget__title::before {
+    transform: rotate(-180deg);
     left: 0;
 }
 
-.widget__title::after {
-    transform: rotate(-40deg);
-    left: 8px;
-}
-
-
-.widget__title.widget-open::before,
-.widget__title.widget-open::after {
+.widget__title.widget-open::before {
+    transform: rotate(180deg);
     background-color: rgba(255, 0, 0, 0.5);
 }
 
-.widget__title.widget-open::before {
-    transform: rotate(-40deg);
-}
 
-.widget__title.widget-open::after {
-    transform: rotate(40deg);
-}
 
 .widget__main {
     border-radius: 0.4rem;
     display: none;
     align-items: center;
     justify-content: flex-start;
-    width: 100%;
-    height: auto;
+    /* width: 100%; */
+    /* height: auto; */
     transition: height 0.3s ease-out;
 }
 
@@ -197,6 +191,13 @@ select {
     margin: 0 auto;
 }
 
+.out__map {}
+
+.out__map-holder {
+    max-width: 500px;
+    max-height: 300px;
+    min-height: 200px;
+}
 
 .out__temp {
     font-weight: 700;
@@ -313,7 +314,7 @@ select {
 *************************************************************/
 @media (max-width:479.98px) {
     .page {
-        height: 22em;
+        height: 15em;
         width: 22em;
     }
 
@@ -323,6 +324,18 @@ select {
 
     .weather__widget {
         padding-left: 0;
+    }
+
+
+    #container-openweathermap-widget-1 {
+        position: absolute;
+        top: 8%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #container-openweathermap-widget-1 .widget-left--blue {
+        width: 100%;
     }
 
     .widget__title {
@@ -347,6 +360,7 @@ select {
     }
 
     .widget__main {
+        width: 100%;
         margin-right: 2.5em;
     }
 
