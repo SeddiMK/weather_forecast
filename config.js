@@ -8,7 +8,7 @@
 // dotenvFlow.config();
 
 export const URL_CONF = {
-  URL: 'http://api.openweathermap.org/data/2.5/',
+  URL: 'https://api.openweathermap.org/data/2.5/',
   URLGeoCod: 'https://api-bdc.net/data/',
   //   URLMap: 'https://www.mapquestapi.com/staticmap/v5/',
 
