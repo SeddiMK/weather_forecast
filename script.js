@@ -2,7 +2,17 @@ import { URL_CONF, API_KEY_CONF } from './config.js';
 
 const { URL, URLMap, URLGeoCod } = URL_CONF;
 const { APIKEY, APIKEYGeoCod, APIKEYMap } = API_KEY_CONF;
-//
+
+// import dotenv from 'dotenv';
+// dotenv.config();
+
+// let { API_KEY, API_KEYGeoCod, API_KEYMap } = process.env;
+// console.log(process.env.API_KEY, 'API_KEY');
+
+// export const APIKEY = import.meta.env.API_KEY;
+// export const APIKEYGeoCod = import.meta.env.API_KEYGeoCod;
+// export const APIKEYMap = import.meta.env.API_KEYMap;
+
 // cansel config.js ====================================================
 const out = document.querySelector('.out');
 const metricSel = document.querySelector('#metric');
@@ -43,10 +53,10 @@ async function showPosWeatForecast(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let scrnWidth = screen.width - 64;
-  const paramGeoCodingPosition = `reverse-geocode?latitude=${lat}&longitude=${lon}&localityLanguage=en&key=${process.env.APIKEYGeoCod}`;
+  const paramGeoCodingPosition = `reverse-geocode?latitude=${lat}&longitude=${lon}&localityLanguage=en&key=${APIKEYGeoCod}`;
 
-  const paramFetchWeatcher = `weather?lat=${lat}&lon=${lon}&units=${metricSys}&appid=${process.env.APIKEY}`;
-  const paramFetchForecast = `forecast?lat=${lat}&lon=${lon}&units=${metricSys}&appid=${process.env.APIKEY}`;
+  const paramFetchWeatcher = `weather?lat=${lat}&lon=${lon}&units=${metricSys}&appid=${APIKEY}`;
+  const paramFetchForecast = `forecast?lat=${lat}&lon=${lon}&units=${metricSys}&appid=${APIKEY}`;
 
   let dataW;
   let dataForecast;
@@ -80,7 +90,7 @@ async function showPosWeatForecast(position) {
   // ----------------------------------------------------
 
   // map ---------------------------------------------------------------
-  const paramMap = `?apikey=${process.env.APIKEYMap}&lang=ru_RU`;
+  const paramMap = `?apikey=${APIKEYMap}&lang=ru_RU`;
   let imgUrlMap = URLMap + paramMap;
 
   console.log(imgUrlMap, '-------------------------------imgUrlMap');
@@ -237,7 +247,7 @@ function showWeather(dataW, dataGeoPos) {
   window.myWidgetParam.push({
     id: 2,
     cityid: dataWeather.id,
-    appid: process.env.APIKEY,
+    appid: APIKEY,
     units: metricSys,
     containerid: 'openweathermap-widget-1',
   });
