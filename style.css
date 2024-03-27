@@ -1,8 +1,9 @@
 :root {
     box-sizing: border-box;
-    font-size: calc(1vw + 0.6em);
+    font-size: 16px;
 
     --min-width: 1080px;
+    --max-width: 1240px;
     --base-color: rgb(51, 90, 233);
     --title-color: rgb(12, 181, 223);
     --base-font: Georgia, 'Times New Roman', Times, sans-serif;
@@ -17,14 +18,6 @@ body {
 body {
     line-height: 1;
     font-family: var(--base-font);
-    /* background-image: url(/image/bg/gory_ozero_vershiny_129263_2560x1600.jpg); */
-    /* background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover; */
 }
 
 
@@ -39,42 +32,48 @@ img.background {
     left: 0;
 }
 
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     box-sizing: content-box;
-    padding: 0 .65em;
+    padding: 0 .65rem;
+    max-width: var(--max-width);
+    /* min-width: 1042.06px; */
 }
 
 
 
-/************************************************************
-********************* page ********************************** 
-*************************************************************/
+/*------------------------------------ page ----------------------------------*/
 .page {
     display: flex;
     justify-content: space-between;
-    margin-top: 1em;
+    margin-top: 1rem;
     width: 100%;
 }
 
 .page__title {
     color: var(--title-color);
-    font-size: 1.2rem;
-
 }
 
-/* widget =============================================== */
+/* ---------------------------------- widget ---------------------------------- */
+.widget {
+    width: 11.4rem;
+}
+
 .widget__title {
+    white-space: nowrap;
     position: relative;
-    font-size: 1rem;
     cursor: pointer;
-    padding: 0em 2.7em 0.7em 30px;
+
 }
-
-
 
 .open-spoiler--hover {
     color: var(--title-color);
@@ -86,31 +85,33 @@ img.background {
 
 }
 
-..widget__title {
+.widget__title {
+    position: relative;
+    width: 100%;
+    top: 0;
+    right: 0;
     color: #000;
 }
 
 .widget__title::before {
-
     content: "";
     position: absolute;
-    left: 10px;
-    top: 5px;
     border-color: transparent transparent rgb(57, 57, 57) transparent;
     border-style: solid;
-    border-width: 0px 5px 8px 5px;
+    border-width: 0px 4px 7px 4px;
     height: 0px;
     width: 0px;
 }
 
 .widget__title::before {
-    transform: rotate(-180deg);
-    left: 0;
+    transform: rotate(180deg);
+    top: 0.8rem;
+    left: -1rem;
 }
 
 .widget__title.widget-open::before {
-    transform: rotate(180deg);
-    background-color: rgba(255, 0, 0, 0.5);
+    transform: rotate(0deg);
+    color: #000;
 }
 
 
@@ -120,16 +121,14 @@ img.background {
     display: none;
     align-items: center;
     justify-content: flex-start;
-    /* width: 100%; */
-    /* height: auto; */
     transition: height 0.3s ease-out;
 }
 
-/************************************************************
-********************* weather ******************************* 
-*************************************************************/
+/*------------------------------------ weather --------------------------------*/
 .weather {
     width: 100%;
+    height: 100%;
+
     background-color: rgb(255, 255, 255, 0.7);
     border-radius: 0.4rem;
 }
@@ -141,11 +140,14 @@ img.background {
     font-size: 1.2rem;
     padding: 0.9rem;
     color: var(--title-color);
+    margin: auto 0;
+
+
 }
 
 .weather-block__title {
 
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
 }
 
 .main-weather {
@@ -153,7 +155,7 @@ img.background {
 }
 
 .out {
-    margin-bottom: 2em;
+    margin-bottom: 2rem;
 }
 
 
@@ -167,17 +169,17 @@ img.background {
 }
 
 .out__weatcher:not(:last-child) {
-    margin-right: 3em;
+    margin-right: 1.5rem;
 }
 
 .out__list>li {
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
 }
 
 select {
     height: auto;
     border: 0px;
-    border-radius: .43em;
+    border-radius: .43rem;
     outline: none;
     padding: .4rem 0rem .5rem 0rem;
     margin: 0 auto;
@@ -191,13 +193,6 @@ select {
     margin: 0 auto;
 }
 
-.out__map {}
-
-.out__map-holder {
-    max-width: 500px;
-    max-height: 300px;
-    min-height: 200px;
-}
 
 .out__temp {
     font-weight: 700;
@@ -205,7 +200,7 @@ select {
 }
 
 .out__name-city {
-    margin-bottom: 0.5em;
+    margin-bottom: 0.5rem;
 }
 
 .out__data {
@@ -216,18 +211,18 @@ select {
 .out__open-spoiler {
     position: relative;
     cursor: pointer;
-    padding-left: 1.7em;
-    margin-bottom: 1em;
+    padding-left: 1.7rem;
+    margin-bottom: 1rem;
 }
 
 .out__open-spoiler::before,
 .out__open-spoiler::after {
     content: '';
-    width: 0.7em;
+    width: 0.7rem;
     height: 1px;
     background-color: #000;
     position: absolute;
-    top: .5em;
+    top: .5rem;
     transition: transform 0.3s ease 0s;
 }
 
@@ -238,7 +233,7 @@ select {
 
 .out__open-spoiler::after {
     transform: rotate(-40deg);
-    left: 0.59em;
+    left: 0.59rem;
 }
 
 .out__open-spoiler.spoiler-open::before,
@@ -266,16 +261,16 @@ select {
 
 .spoiler__item {
     border: 3px solid rgba(0, 0, 0, 0.5);
-    border-radius: 0.4em;
+    border-radius: 0.4rem;
     text-align: left;
     color: #000;
     font-size: 1.7rem;
     font-weight: 700;
-    padding: 0.5em;
+    padding: 0.5rem;
 }
 
 .spoiler__item:not(:last-child) {
-    margin-right: 0.7em;
+    margin-right: 0.7rem;
 }
 
 .spoiler__block-tmp {
@@ -284,9 +279,7 @@ select {
 
 }
 
-/************************************************************
-********************* footer ******************************** 
-*************************************************************/
+/*--------------------------------- footer --------------------------------*/
 .about-me {
     color: #000;
 }
@@ -294,7 +287,7 @@ select {
 .fa {
     width: 50px;
     text-align: right;
-    margin-right: .3em;
+    margin-right: .3rem;
 }
 
 .about-me--hover>a {
@@ -309,13 +302,10 @@ select {
     color: var(--base-color);
 }
 
-/************************************************************
-********************* @media ******************************** 
-*************************************************************/
-@media (max-width:479.98px) {
+/*------------------------------------ @media ----------------------------*/
+@media (min-width:320px) {
     .page {
-        height: 15em;
-        width: 22em;
+        height: calc(1vh + 50px);
     }
 
     .page__title {
@@ -327,33 +317,17 @@ select {
     }
 
 
-    #container-openweathermap-widget-1 {
-        position: absolute;
-        top: 8%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
     #container-openweathermap-widget-1 .widget-left--blue {
         width: 100%;
+        left: -70%;
     }
 
     .widget__title {
         line-height: 2;
         font-size: 1.1rem;
-        padding: 0 0 1em 1.7em;
 
     }
 
-    .widget-open.widget__title::before {
-        top: 0.8em;
-        left: 2.5em;
-    }
-
-    .widget-open.widget__title::after {
-        top: 0.8em;
-        left: 3.1em;
-    }
 
     .widget__title>h4 {
         text-align: right;
@@ -361,7 +335,32 @@ select {
 
     .widget__main {
         width: 100%;
-        margin-right: 2.5em;
+        margin-right: 2.5rem;
+    }
+
+    .out {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        width: 100%;
+    }
+
+    .out__weatcher {
+        flex: 0 0 25%;
+    }
+
+    .out__map {
+        flex: 1 1 auto;
+    }
+
+    .out__contact {
+        display: flex;
+        align-items: center;
+        flex: 0 0 33%;
+        min-width: 311px;
     }
 
     .out__icon-temp-block {
@@ -369,268 +368,55 @@ select {
         justify-content: center;
     }
 
-    .out__map-holder {
-        margin-bottom: 2em;
+    #mapholder {
+        width: 340px;
+        height: 300px;
+        margin-bottom: 2rem;
     }
 
     .main-weather__spoiler {
         display: flex;
         justify-content: center;
-        gap: 1.5em;
+        gap: 1.5rem;
         flex-wrap: wrap;
     }
 }
 
-@media (min-width:479.98px) {
-    :root {
-        font-size: calc(1vw + 0.2em);
-    }
-
-    .page {
-        height: 27em;
-    }
-
-    .page__title {
-        font-size: 3rem;
-    }
-
-    .weather__widget {
-        padding-left: 0;
-    }
-
-    .widget__title {
-        line-height: 2;
-        font-size: 1.6rem;
-        padding: 0 0 1em 1.7em;
+@media (min-width:498.98px) {
+    .out {
+        flex-direction: row;
 
     }
 
-    .widget__title::before {
-        top: 0.9em;
-        left: 0.3em;
-
+    .out__weatcher {
+        flex: 0 0 auto;
     }
 
-    .widget__title::after {
-        top: 0.9em;
-        left: 0.7em;
-        padding-left: 0;
+    .out__map {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
     }
 
-
-    .widget-open.widget__title::before {
-        top: 0.9em;
-        left: 0.3em;
-    }
-
-    .widget-open.widget__title::after {
-        top: 0.9em;
-        left: 0.7em;
-        padding-left: 0;
-    }
-
-    .widget__title>h4 {
-        text-align: right;
-    }
-
-    .widget__main {
-        margin-right: 2.5em;
-    }
-
-    .out__icon-temp-block {
+    .out__contact {
         display: flex;
         justify-content: center;
+        flex: 0 0 100%;
+        min-width: 311px;
     }
 
-    .out__map-holder {
-        margin-bottom: 2em;
-    }
-
-    .main-weather__spoiler {
-        display: flex;
-        justify-content: center;
-        gap: 1.5em;
-        flex-wrap: wrap;
+    #mapholder {
+        width: 260px;
+        height: 260px;
     }
 }
 
 @media (min-width:767.98px) {
-    :root {
-        font-size: calc(1vw + 0.3em);
-    }
-
-    .page {
-        height: 27em;
-    }
-
-    .page__title {
-        font-size: 3rem;
-    }
-
-    .weather__widget {
-        padding-left: 0;
-    }
-
-    .widget__title {
-        line-height: 2;
-        font-size: 1.6rem;
-        padding: 0 0 1em 1.7em;
-
-    }
-
-    .widget__title::before {
-        top: 0.9em;
-        left: 0.4em;
-
-    }
-
-    .widget__title::after {
-        top: 0.9em;
-        left: 0.7em;
-        padding-left: 0;
-    }
-
-
-    .widget-open.widget__title::before {
-        top: 0.9em;
-        left: 0.4em;
-    }
-
-    .widget-open.widget__title::after {
-        top: 0.9em;
-        left: 0.7em;
-        padding-left: 0;
-    }
-
-    .widget__title>h4 {
-        text-align: right;
-    }
-
-    .widget__main {
-        margin-right: 2.5em;
-    }
-
-    .out {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1.5em;
-
-    }
-
-    .out__icon-temp-block {
-        display: flex;
-        justify-content: flex-start;
-    }
-
-    .out__map-holder {
-        margin-bottom: 2em;
-    }
-
-    .main-weather__spoiler {
-        display: flex;
+    .out__map {
         justify-content: center;
-        gap: 1.5em;
-        flex-wrap: wrap;
-    }
-}
-
-@media (min-width:991.98px) {
-    .page {
-        height: 27em;
     }
 
-    .page__title {
-        font-size: 3rem;
+    .out__contact {
+        flex: 0 0 auto;
     }
-
-    .weather__widget {
-        padding-left: 0;
-    }
-
-    .widget__title {
-        line-height: 2;
-        font-size: 1.6rem;
-        padding: 0 0 1em 1.7em;
-
-    }
-
-    .widget__title::before {
-        top: 0.9em;
-        left: 0.4em;
-
-    }
-
-    .widget__title::after {
-        top: 0.9em;
-        left: 0.7em;
-        padding-left: 0;
-    }
-
-
-    .widget-open.widget__title::before {
-        top: 0.9em;
-        left: 0.4em;
-    }
-
-    .widget-open.widget__title::after {
-        top: 0.9em;
-        left: 0.7em;
-        padding-left: 0;
-    }
-
-    .widget__title>h4 {
-        text-align: right;
-    }
-
-    .widget__main {
-        margin-right: 2.5em;
-    }
-
-    .out {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1.5em;
-    }
-
-    .out__icon-temp-block {
-        display: flex;
-        justify-content: flex-start;
-    }
-
-    .out__map-holder {
-        margin-bottom: 2em;
-    }
-
-    .out__weatcher:not(:last-child) {
-        margin-right: 0em;
-    }
-
-    .main-weather__spoiler {
-        display: flex;
-        justify-content: center;
-        gap: 1.5em;
-        flex-wrap: wrap;
-    }
-}
-
-
-
-@media (min-width:1200px) {
-    .page {
-        height: 15em;
-    }
-
-    .widget__title::after {
-        top: 0.9em;
-        left: 0.6em;
-        padding-left: 0;
-    }
-
-
-    .widget-open.widget__title::after {
-        top: 0.9em;
-        left: 0.6em;
-        padding-left: 0;
-    }
-
 }
