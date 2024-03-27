@@ -43,10 +43,10 @@ async function showPosWeatForecast(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let scrnWidth = screen.width - 64;
-  const paramGeoCodingPosition = `reverse-geocode?latitude=${lat}&longitude=${lon}&localityLanguage=en&key=${APIKEYGeoCod}`;
+  const paramGeoCodingPosition = `reverse-geocode?latitude=${lat}&longitude=${lon}&localityLanguage=en&key=${process.env.APIKEYGeoCod}`;
 
-  const paramFetchWeatcher = `weather?lat=${lat}&lon=${lon}&units=${metricSys}&appid=${APIKEY}`;
-  const paramFetchForecast = `forecast?lat=${lat}&lon=${lon}&units=${metricSys}&appid=${APIKEY}`;
+  const paramFetchWeatcher = `weather?lat=${lat}&lon=${lon}&units=${metricSys}&appid=${process.env.APIKEY}`;
+  const paramFetchForecast = `forecast?lat=${lat}&lon=${lon}&units=${metricSys}&appid=${process.env.APIKEY}`;
 
   let dataW;
   let dataForecast;
@@ -80,7 +80,7 @@ async function showPosWeatForecast(position) {
   // ----------------------------------------------------
 
   // map ---------------------------------------------------------------
-  const paramMap = `?apikey=${APIKEYMap}&lang=ru_RU`;
+  const paramMap = `?apikey=${process.env.APIKEYMap}&lang=ru_RU`;
   let imgUrlMap = URLMap + paramMap;
 
   console.log(imgUrlMap, '-------------------------------imgUrlMap');
@@ -237,7 +237,7 @@ function showWeather(dataW, dataGeoPos) {
   window.myWidgetParam.push({
     id: 2,
     cityid: dataWeather.id,
-    appid: APIKEY,
+    appid: process.env.APIKEY,
     units: metricSys,
     containerid: 'openweathermap-widget-1',
   });
