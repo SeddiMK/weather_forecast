@@ -312,6 +312,10 @@ select {
         font-size: 2rem;
     }
 
+    .weather-block {
+        padding: 0.5rem;
+    }
+
     .weather__widget {
         padding-left: 0;
     }
@@ -354,13 +358,23 @@ select {
 
     .out__map {
         flex: 1 1 auto;
+        margin-bottom: 1.4rem;
     }
 
     .out__contact {
         display: flex;
         align-items: center;
         flex: 0 0 33%;
-        min-width: 311px;
+        min-width: 240px;
+    }
+
+    .fa {
+        width: 35px;
+    }
+
+    .about-me li {
+        display: flex;
+        align-items: center;
     }
 
     .out__icon-temp-block {
@@ -368,11 +382,7 @@ select {
         justify-content: center;
     }
 
-    #mapholder {
-        width: 340px;
-        height: 300px;
-        margin-bottom: 2rem;
-    }
+
 
     .main-weather__spoiler {
         display: flex;
@@ -380,16 +390,22 @@ select {
         gap: 1.5rem;
         flex-wrap: wrap;
     }
+
+    #mapholder {
+        width: 260px;
+        height: 260px;
+    }
 }
 
 @media (min-width:498.98px) {
-    .out {
-        flex-direction: row;
 
-    }
 
     .out__weatcher {
         flex: 0 0 auto;
+    }
+
+    .out__weatcher:not(:last-child) {
+        margin-right: 0.6rem;
     }
 
     .out__map {
@@ -405,9 +421,19 @@ select {
         min-width: 311px;
     }
 
-    #mapholder {
-        width: 260px;
-        height: 260px;
+}
+
+@media (min-width:567.98px) {
+    .out {
+        flex-direction: row;
+    }
+
+    .out__weatcher:not(:last-child) {
+        margin-right: 1.5rem;
+    }
+
+    .fa {
+        width: 45px;
     }
 }
 
@@ -416,7 +442,17 @@ select {
         justify-content: center;
     }
 
+    .out__weatcher:not(:last-child) {
+        margin-right: 1.5rem;
+    }
+
     .out__contact {
         flex: 0 0 auto;
+    }
+
+    #mapholder {
+        width: 340px;
+        height: 300px;
+        margin-bottom: 2rem;
     }
 }

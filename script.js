@@ -3,16 +3,6 @@ import { URL_CONF, API_KEY_CONF } from './config.js';
 const { URL, URLMap, URLGeoCod } = URL_CONF;
 const { APIKEY, APIKEYGeoCod, APIKEYMap } = API_KEY_CONF;
 
-// import dotenv from 'dotenv';
-// dotenv.config();
-
-// let { API_KEY, API_KEYGeoCod, API_KEYMap } = process.env;
-// console.log(process.env.API_KEY, 'API_KEY');
-
-// export const APIKEY = import.meta.env.API_KEY;
-// export const APIKEYGeoCod = import.meta.env.API_KEYGeoCod;
-// export const APIKEYMap = import.meta.env.API_KEYMap;
-
 // cansel config.js ====================================================
 const out = document.querySelector('.out');
 const metricSel = document.querySelector('#metric');
