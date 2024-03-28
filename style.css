@@ -329,9 +329,11 @@ select {
     .widget__title {
         line-height: 2;
         font-size: 1.1rem;
-
     }
 
+    .widget__title::before {
+        content: none;
+    }
 
     .widget__title>h4 {
         text-align: right;
@@ -399,6 +401,9 @@ select {
 
 @media (min-width:498.98px) {
 
+    .widget__title::before {
+        content: '';
+    }
 
     .out__weatcher {
         flex: 0 0 auto;
