@@ -1,160 +1,242 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
-    <title>Weatcher_1</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="null.css">
-    <link rel="stylesheet" href="style.css">
-    <script id="scrMap" src="https://api-maps.yandex.ru/2.1/?apikey=c960fefe-a1b4-422a-ab2d-a582498632b6&lang=ru_RU"
-        type="text/javascript">
-        </script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+	<title>Верстка «4_Incom»</title>
 </head>
 
 <body>
-    <div class="wrapper">
-        <img src="image/bg/luiz.jpg" class="background" alt="Nature picture mountains and water" />
-        <div class="container">
+	<div class="rootpage">
+		<h1>Сайт «4_Incom»</h1>
+		<div class="rootpage__info info-project">
+			<h2 class="info-project__title">Особенности проекта</h2>
+			<p class="info-project__desc">Здесь реализованно: api- местоположения, api- карта с указанием положения
+				клиента, api- погоды, прогноз погода на 5 дней, гаджет погоды, анимация.</p>
+			<p class="info-project__desc-stack">В данном проекте использовались HTML, SCSS, JS, Mobile-First,
+				адаптивная, кроссбраузерная верстка, npm, GULP.</p>
+		</div>
+		<h2>Проект:</h2>
+		<ul class="rootpage__list">
+			<li><a class="rootpage__list-link-site" target="_blank" href="home.html">Нажмите здесь для просмотра
+					сайта</a></li>
+		</ul>
+		<!-- <h2>Попапы:</h2>
+		<ol class="rootpage__list">
+			<li><a target="_blank" href="home.html#"></a></li>
+		</ol> -->
+		<!-- <div class="rootpage__tnx">
+			<h2>Здравствуйте</h2>
+			<p>Буду рад хорошему отзыву.</p>
+			<p>Обращайтесь еще!</p>
+		</div> -->
+		<div class="rootpage__contacts">
+			<div class="my-contact">
+				<h3 class="my-contact__title">Связаться со мной можно по ссылкам ниже:</h3>
+				<ul class="my-contact__about-me about-me">
+					<li class="about-me__link about-me--gmail about-me--hover">
+						<a href="https://mail.google.com/mail/u/1/?view=cm&fs=1&to=web.egorovm@gmail.com&tf=1"
+							target="_blank"><i class='fa fa-google fa-2x'></i><span>web.egorovm@gmail.com</span></a>
+					</li>
+					<li class="about-me__link about-me--git about-me--hover">
+						<a href="https://github.com/SeddiMK" target="_blank"><i
+								class="fa fa-github fa-2x"></i><span>https://github.com/SeddiMK</span></a>
+					</li>
+					<li class="about-me__link about-me--linkedin about-me--hover">
+						<a href="skype:live:.cid.985f030235657018?add" target="_blank"><i
+								class="fa fa-skype fa-2x"></i><span>skype</span></a>
+					</li>
+					<li class="about-me__link about-me--facebook about-me--hover">
+						<a href="https://github.com/SeddiMK/weather_forecast" target="_blank"><i
+								class="fa fa-link fa-2x"></i><span>link to
+								project from github</span></a>
+					</li>
 
-            <section class="page">
-                <a href="" class="page__title">Weather</a>
+				</ul>
+			</div>
 
-                <div class="weather__widget widget">
-                    <div class="widget__title">
-                        <h4 class="widget__title-open  open-spoiler--hover">Click here open Widget</h4>
-                    </div>
-                    <div class="widget__main" id="openweathermap-widget-1"></div>
-                </div>
-            </section>
-
-            <section class="weather">
-
-                <p class="weather__location-sapport" id="location-sapport">Geolocation is supported by this browser.
-                </p>
-
-                <div class="weather-block">
-                    <h2 class="weather-block__title">Weather in city</h2>
-                    <div class="weather-block__main main-weather">
-
-                        <select class="main-weather__units-selection" name="metric" id="metric">
-                            <option value="metric">Metric system in C&deg;
-                            </option>
-                            <option value="imperial">Imperial system in F
-                            </option>
-
-                        </select>
-
-                        <div class="main-weather__out out">
-                            <div class="out__weatcher">
-                                <div class="out__icon-temp-block">
-                                    <h3 class="out__temp"></h3>
-                                    <div class="out__icon"></div>
-
-                                </div>
-                                <ul class="out__list">
-                                    <li class="out__data">2023-09-30</д>
-                                    <li class="out__name-city">
-                                    </li>
-                                    <li class="out__description">
-                                    </li>
-                                    <li class="out__wind-deg">
-                                    </li>
-                                    <li class="out__wind-speed">
-                                    </li>
-                                    <li class="out__pressure">
-                                    </li>
-                                </ul>
-
-                            </div>
-                            <div class="out__map">
-                                <div id="mapholder" class="out__map-holder">This is where you
-                                    are.</div>
-                            </div>
-                            <div class="out__contact">
-                                <ul class="footer__about about-me ">
-                                    <li class="about-me__gmail about-me--hover">
-                                        <i class='fa fa-google fa-2x'></i>
-                                        <a href="https://mail.google.com/mail/u/1/?view=cm&fs=1&to=web.egorovm@gmail.com&tf=1"
-                                            target="_blank">web.egorovm@gmail.com</a>
-                                    </li>
-                                    <li class="about-me__git about-me--hover"><i class="fa fa-github fa-2x"></i><a
-                                            href="https://github.com/SeddiMK"
-                                            target="_blank">https://github.com/SeddiMK</a></li>
-                                    <li class="about-me__linkedin about-me--hover"><i class="fa fa-skype fa-2x"></i><a
-                                            href="skype:live:.cid.985f030235657018?add" target="_blank">skype</a></li>
-                                    <li class="about-me__facebook about-me--hover"><i class="fa fa-link fa-2x"></i><a
-                                            href="https://github.com/SeddiMK/weather_forecast" target="_blank">link to
-                                            project from github</a></li>
-
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="main-weather__forecast-spoiler">
-                            <div class="out__open-spoiler open-spoiler--hover">Click to show 5 day forecast</div>
-                            <div class="main-weather__spoiler">
-                                <div class="spoiler__item">
-                                    <h4>Date</h4>
-                                    <div class="spoiler__block-tmp">
-                                        <h4>Temp</h4>
-                                        <div class="spoiler__icon">Icon</div>
-                                    </div>
-
-                                </div>
-                                <div class="spoiler__item">
-                                    <h4>Date</h4>
-                                    <div class="spoiler__block-tmp">
-                                        <h4>Temp</h4>
-                                        <div class="spoiler__icon">Icon</div>
-                                    </div>
-
-                                </div>
-                                <div class="spoiler__item">
-                                    <h4>Date</h4>
-                                    <div class="spoiler__block-tmp">
-                                        <h4>Temp</h4>
-                                        <div class="spoiler__icon">Icon</div>
-                                    </div>
-
-                                </div>
-                                <div class="spoiler__item">
-                                    <h4>Date</h4>
-                                    <div class="spoiler__block-tmp">
-                                        <h4>Temp</h4>
-                                        <div class="spoiler__icon">Icon</div>
-                                    </div>
-
-                                </div>
-                                <div class="spoiler__item">
-                                    <h4>Date</h4>
-                                    <div class="spoiler__block-tmp">
-                                        <h4>Temp</h4>
-                                        <div class="spoiler__icon">Icon</div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-        </div>
-    </div>
-    </div>
-
-    <script src="slide-toggle.js"></script>
-    <script type="module" src="config.js"></script>
-    <script src='https://openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script>
-    <!-- <script src="https://mapgl.2gis.com/api/js/v1"></script> -->
-    <script type="module" src="script.js"></script>
+		</div>
+	</div>
 </body>
+<style>
+	@charset "UTF-8";
+	@import url("https://fonts.googleapis.com/css?family=Montserrat:regular,700&display=swap");
+
+	*,
+	*::before,
+	*::after {
+		padding: 0px;
+		margin: 0px;
+		border: 0px;
+		box-sizing: border-box;
+	}
+
+	html,
+	body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		min-width: 320px;
+		width: 100%;
+		color: #111;
+		background-color: #fff;
+		font-size: 16px;
+	}
+
+	body {
+		font-family: 'Montserrat';
+		font-size: 100%;
+		line-height: 1;
+		font-size: 1rem;
+	}
+
+	h1 {
+		font-size: 2.5rem;
+		margin: 0px 0px 1.25rem 0px;
+	}
+
+	h2 {
+		font-size: 1.25rem;
+		margin: 0px 0px 1rem 0px;
+	}
+
+	ul li {
+		list-style: none;
+	}
+
+	img {
+		vertical-align: top;
+	}
+
+	.wrapper {
+		width: 100%;
+		min-height: 100%;
+		overflow: hidden;
+	}
+
+	.rootpage {
+		padding: 30px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		color: #111;
+	}
+
+	.rootpage__contacts {
+		background: #32b5a4;
+
+	}
+
+	.rootpage__contacts a {
+		color: #ebe691;
+	}
+
+	.rootpage__list-link-site {
+		text-decoration: underline;
+		font-size: 1.2rem;
+	}
+
+	.rootpage__list-link-site:visited {
+		text-decoration: underline;
+		color: #e24f4f;
+	}
+
+	.rootpage__list-link-site:hover {
+		text-decoration: none;
+	}
+
+	.rootpage__info {
+		line-height: 140%;
+		margin: 0px 0px 1.5rem 0px;
+	}
+
+	.rootpage__list {
+		margin: 0px 0px 2.25rem 1.25rem;
+	}
+
+	.rootpage__list li:not(:last-child) {
+		margin: 0px 0px 15px 0px;
+	}
+
+	.rootpage__contacts {
+		border-radius: 200px;
+		padding: 20px 65px;
+		line-height: 140%;
+	}
+
+	.my-contact {
+		padding: 12px;
+	}
+
+	.my-contact__title {
+		margin-bottom: 12px;
+	}
+
+	.about-me__link:not(:last-child) {
+		margin-bottom: 12px;
+	}
+
+	.about-me__link a {
+		display: flex;
+		align-items: center;
+	}
+
+	.about-me__link a span {
+		text-decoration: underline;
+		color: #ebe691;
+
+	}
+
+	.about-me__link a span:visited {
+		text-decoration: underline;
+		color: #aaa768;
+	}
+
+	.about-me__link a span:hover {
+		text-decoration: none;
+	}
+
+	.about-me__link a {
+		text-decoration: none;
+	}
+
+	.about-me__link a:hover .fa {
+		color: #fff;
+	}
+
+	.fa {
+		margin-right: 10px;
+	}
+
+	@media (max-width: 1080px) {
+		.rootpage {
+			padding: 30px 15px;
+		}
+	}
+
+	@media (max-width: 767px) {
+		h1 {
+			font-size: 1.85rem;
+			margin: 0px 0px 1.25rem 0px;
+		}
+	}
+
+	@media (max-width: 767px) {
+		h2 {
+			font-size: 1.125rem;
+			margin: 0px 0px 1rem 0px;
+		}
+	}
+
+	@media (max-width: 480px) {
+
+		.rootpage__contacts {
+			border-radius: 40px;
+			padding: 20px;
+		}
+	}
+</style>
 
 </html>

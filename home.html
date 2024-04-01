@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+    <title>Weatcher_1</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="null.css">
+    <link rel="stylesheet" href="style.css">
+    <script id="scrMap" src="https://api-maps.yandex.ru/2.1/?apikey=c960fefe-a1b4-422a-ab2d-a582498632b6&lang=ru_RU"
+        type="text/javascript">
+        </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <img src="image/bg/luiz.jpg" class="background" alt="Nature picture mountains and water" />
+        <div class="container">
+
+            <section class="page">
+                <a href="" class="page__title">Weather</a>
+
+                <div class="weather__widget widget">
+                    <div class="widget__title">
+                        <h4 class="widget__title-open  open-spoiler--hover">Click here open Widget</h4>
+                    </div>
+                    <div class="widget__main" id="openweathermap-widget-1"></div>
+                </div>
+            </section>
+
+            <section class="weather">
+
+                <p class="weather__location-sapport" id="location-sapport">Geolocation is supported by this browser.
+                </p>
+
+                <div class="weather-block">
+                    <h2 class="weather-block__title">Weather in city</h2>
+                    <div class="weather-block__main main-weather">
+
+                        <select class="main-weather__units-selection" name="metric" id="metric">
+                            <option value="metric">Metric system in C&deg;
+                            </option>
+                            <option value="imperial">Imperial system in F
+                            </option>
+
+                        </select>
+
+                        <div class="main-weather__out out">
+                            <div class="out__weatcher">
+                                <div class="out__icon-temp-block">
+                                    <h3 class="out__temp"></h3>
+                                    <div class="out__icon"></div>
+
+                                </div>
+                                <ul class="out__list">
+                                    <li class="out__data">2023-09-30</д>
+                                    <li class="out__name-city">
+                                    </li>
+                                    <li class="out__description">
+                                    </li>
+                                    <li class="out__wind-deg">
+                                    </li>
+                                    <li class="out__wind-speed">
+                                    </li>
+                                    <li class="out__pressure">
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <div class="out__map">
+                                <div id="mapholder" class="out__map-holder">This is where you
+                                    are.</div>
+                            </div>
+                            <div class="out__contact">
+                                <ul class="footer__about about-me ">
+                                    <li class="about-me__gmail about-me--hover">
+                                        <i class='fa fa-google fa-2x'></i>
+                                        <a href="https://mail.google.com/mail/u/1/?view=cm&fs=1&to=web.egorovm@gmail.com&tf=1"
+                                            target="_blank">web.egorovm@gmail.com</a>
+                                    </li>
+                                    <li class="about-me__git about-me--hover"><i class="fa fa-github fa-2x"></i><a
+                                            href="https://github.com/SeddiMK"
+                                            target="_blank">https://github.com/SeddiMK</a></li>
+                                    <li class="about-me__linkedin about-me--hover"><i class="fa fa-skype fa-2x"></i><a
+                                            href="skype:live:.cid.985f030235657018?add" target="_blank">skype</a></li>
+                                    <li class="about-me__facebook about-me--hover"><i class="fa fa-link fa-2x"></i><a
+                                            href="https://github.com/SeddiMK/weather_forecast" target="_blank">link to
+                                            project from github</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="main-weather__forecast-spoiler">
+                            <div class="out__open-spoiler open-spoiler--hover">Click to show 5 day forecast</div>
+                            <div class="main-weather__spoiler">
+                                <div class="spoiler__item">
+                                    <h4>Date</h4>
+                                    <div class="spoiler__block-tmp">
+                                        <h4>Temp</h4>
+                                        <div class="spoiler__icon">Icon</div>
+                                    </div>
+
+                                </div>
+                                <div class="spoiler__item">
+                                    <h4>Date</h4>
+                                    <div class="spoiler__block-tmp">
+                                        <h4>Temp</h4>
+                                        <div class="spoiler__icon">Icon</div>
+                                    </div>
+
+                                </div>
+                                <div class="spoiler__item">
+                                    <h4>Date</h4>
+                                    <div class="spoiler__block-tmp">
+                                        <h4>Temp</h4>
+                                        <div class="spoiler__icon">Icon</div>
+                                    </div>
+
+                                </div>
+                                <div class="spoiler__item">
+                                    <h4>Date</h4>
+                                    <div class="spoiler__block-tmp">
+                                        <h4>Temp</h4>
+                                        <div class="spoiler__icon">Icon</div>
+                                    </div>
+
+                                </div>
+                                <div class="spoiler__item">
+                                    <h4>Date</h4>
+                                    <div class="spoiler__block-tmp">
+                                        <h4>Temp</h4>
+                                        <div class="spoiler__icon">Icon</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+    </div>
+    </div>
+
+    <script src="slide-toggle.js"></script>
+    <script type="module" src="config.js"></script>
+    <script src='https://openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script>
+    <!-- <script src="https://mapgl.2gis.com/api/js/v1"></script> -->
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
